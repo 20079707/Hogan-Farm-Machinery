@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Hogan-Farm-Machinery</string>
+    <string name="listTractors">Tractor Catalogue</string>
+    <string name="addTractor">Add Tractor</string>
+    <string name="menu_addTractor">Add</string>
+    <string name="menu_cancelTractor">Cancel</string>
+    <string name="button_addTractor">Add Tractor</string>
+    <string name="hint_tractorMake">Tractor Make</string>
+    <string name="hint_tractorModel">Tractor Model</string>
+</resources>

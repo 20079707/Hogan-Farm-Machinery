@@ -1,0 +1,2 @@
+rootProject.name = "Hogan-Farm-Machinery"
+include ':app'
