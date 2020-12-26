@@ -24,15 +24,14 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         setSupportActionBar(toolbarAdd)
         info("Placemark Activity started..")
 
+        app =application as MainApp
+
         btnAdd.setOnClickListener() {
             tractor.make = tractorMake.text.toString()
             tractor.model = tractorModel.text.toString()
             if (tractor.make.isNotEmpty()) {
-                app.tractors.add(tractor.copy())
+                app.tractors.create(tractor.copy())
                 info("add Button Pressed: ${tractor}")
-                for (i in app.tractors.indices) {
-                    info("Tractor[$i]:${app.tractors[i]}")
-                }
                 setResult(AppCompatActivity.RESULT_OK)
                 finish()
             } else {

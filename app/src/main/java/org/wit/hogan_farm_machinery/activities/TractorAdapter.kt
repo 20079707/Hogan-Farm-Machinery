@@ -8,7 +8,12 @@ import kotlinx.android.synthetic.main.tractor_card.view.*
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.models.TractorModel
 
-class TractorAdapter constructor(private var tractors: List<TractorModel>) :
+interface TractorListener {
+    fun onTractorClick(tractor: TractorModel)
+}
+
+class TractorAdapter constructor(private var tractors: List<TractorModel>,
+                                 private val listener: TractorListener) :
     RecyclerView.Adapter<TractorAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
@@ -23,16 +28,17 @@ class TractorAdapter constructor(private var tractors: List<TractorModel>) :
 
     override fun onBindViewHolder(holder: MainHolder, position: Int) {
         val tractor = tractors[holder.adapterPosition]
-        holder.bind(tractor)
+        holder.bind(tractor, listener)
     }
 
     override fun getItemCount(): Int = tractors.size
 
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
-        fun bind(tractor: TractorModel) {
+        fun bind(tractor: TractorModel, listener: TractorListener) {
             itemView.tractorMake.text = tractor.make
             itemView.tractorModel.text = tractor.model
+            itemView.setOnClickListener { listener.onTractorClick(tractor) }
         }
     }
 }

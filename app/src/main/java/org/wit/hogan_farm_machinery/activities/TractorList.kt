@@ -5,11 +5,13 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.tractor_list.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.main.MainApp
+import org.wit.hogan_farm_machinery.models.TractorModel
 
-class TractorList : AppCompatActivity() {
+class TractorList : AppCompatActivity(), TractorListener {
 
     lateinit var app: MainApp
 
@@ -23,7 +25,7 @@ class TractorList : AppCompatActivity() {
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = TractorAdapter(app.tractors)
+        recyclerView.adapter = TractorAdapter(app.tractors.findAll(), this)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -36,5 +38,8 @@ class TractorList : AppCompatActivity() {
             R.id.item_add -> startActivityForResult<MainTractor>(0)
         }
         return super.onOptionsItemSelected(item)
+    }
+    override fun onTractorClick(tractor: TractorModel) {
+        startActivityForResult(intentFor<MainTractor>(), 0)
     }
 }
