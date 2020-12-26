@@ -18,6 +18,9 @@ class TractorList : AppCompatActivity() {
         setContentView(R.layout.tractor_list)
         app = application as MainApp
 
+        toolbar.title = title
+        setSupportActionBar(toolbar)
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = TractorAdapter(app.tractors)
