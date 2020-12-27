@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="org.wit.hogan_farm_machinery.activities.TractorList">
+    tools:context=".activities.TractorList">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
@@ -13,7 +13,7 @@
         android:background="@color/colourToolBar"
         android:fitsSystemWindows="true"
         app:elevation="0dip"
-        app:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar">
+        app:theme="@style/Theme.HoganFarmMachinery">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -22,6 +22,8 @@
             app:titleTextColor="@color/white" />
 
     </com.google.android.material.appbar.AppBarLayout>
+
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"

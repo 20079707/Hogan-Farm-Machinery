@@ -11,12 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HoganFarmMachinery">
         <activity
-            android:name=".activities.MainTractor">
+            android:name=".activities.MainTractor"
+            android:label="@string/addTractor"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
         </activity>
 
         <activity
-            android:name=".activities.TractorList">
-
+            android:name=".activities.TractorList"
+            android:label="@string/listTractors"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

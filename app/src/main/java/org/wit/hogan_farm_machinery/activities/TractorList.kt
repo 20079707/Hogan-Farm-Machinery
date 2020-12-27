@@ -1,5 +1,6 @@
 package org.wit.hogan_farm_machinery.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
@@ -40,6 +41,10 @@ class TractorList : AppCompatActivity(), TractorListener {
         return super.onOptionsItemSelected(item)
     }
     override fun onTractorClick(tractor: TractorModel) {
-        startActivityForResult(intentFor<MainTractor>(), 0)
+        startActivityForResult(intentFor<MainTractor>().putExtra("tractor_edit", tractor), 0)
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        recyclerView.adapter?.notifyDataSetChanged()
+        super.onActivityResult(requestCode, resultCode, data)
     }
 }
