@@ -14,11 +14,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent">
+
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBarLayout"
@@ -36,21 +40,21 @@
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
 
-        <Button
-            android:id="@+id/chooseImage"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:background="@color/colourAddButton"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:text="@string/button_addImage"
-            android:textColor="@color/white"
-            android:textSize="16sp" />
-
+            <TextView
+                android:id="@+id/text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="@string/adDetails"
+                android:padding="8dp"
+                android:textSize="12pt"
+                android:textColor="@color/black"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/black"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"/>
 
             <RadioGroup
                 android:id="@+id/radioButtons"
@@ -76,6 +80,46 @@
 
             </RadioGroup>
 
+        <Button
+            android:id="@+id/chooseImage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/colourAddButton"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/button_addImage"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+
+
+
+            <Spinner
+                android:id="@+id/categorySpinner"
+                style="@style/Widget.AppCompat.Spinner"
+                android:layout_width="300dp"
+                android:layout_height="?attr/dropdownListPreferredItemHeight"
+                android:layout_margin="10dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/spinner_bg"
+                android:dropDownWidth="300dp"
+                android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                android:paddingEnd="14dp"
+                android:popupBackground="@android:color/white"
+                android:popupElevation="3dp"
+                android:stateListAnimator="@drawable/spinner_sla"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="RtlSymmetry" />
+
+
 
         <ImageView
             android:id="@+id/tractorImage"
@@ -99,6 +143,7 @@
                 android:maxLength="25"
                 android:maxLines="1"
                 android:textColor="@color/black"
+                android:background="@color/grey"
                 android:textSize="14sp" >
 
             </EditText>
@@ -106,28 +151,28 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/model"
+            android:id="@+id/price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
 
         <EditText
-            android:id="@+id/tractorModel"
+            android:id="@+id/tractorPrice"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/hint_tractorModel"
+            android:hint="@string/hint_tractorPrice"
             android:inputType="text"
             android:maxLength="25"
             android:maxLines="1"
             android:textColor="@color/black"
-            android:layout_below="@id/tractorMake"
+            android:background="@color/grey"
             android:textSize="14sp" >
 
         </EditText>
         </com.google.android.material.textfield.TextInputLayout>
 
 
-        <Button
+            <Button
             android:id="@+id/btnAdd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -141,6 +186,8 @@
             android:textSize="16sp"/>
 
         </LinearLayout>
+
+        </ScrollView>
 
     </RelativeLayout>
 

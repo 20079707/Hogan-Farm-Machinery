@@ -2,15 +2,13 @@ package org.wit.hogan_farm_machinery.activities
 
 import android.content.Intent
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
-import android.widget.RadioButton
-import android.widget.RadioGroup
+import android.view.*
+import android.widget.*
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_tractor.*
+import kotlinx.android.synthetic.main.activity_tractor.view.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -22,12 +20,12 @@ import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
 
-
 class MainTractor : AppCompatActivity(), AnkoLogger {
 
     private var tractor = TractorModel()
     private lateinit var app: MainApp
     private val imageRequest = 1
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,11 +37,30 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         app = application as MainApp
         var edit = false
 
+        val data = resources.getStringArray(R.array.category_array)
+
+        val adapter = ArrayAdapter(this, R.layout.spinner_item_selected, data)
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
+
+
+
+        val spinner = findViewById<Spinner>(R.id.categorySpinner)
+        spinner.adapter = adapter
+        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
+                Toast.makeText(this@MainTractor, parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+
+            }
+        }
+
         if (intent.hasExtra("tractor_edit")) {
             edit = true
             tractor = intent.extras?.getParcelable("tractor_edit")!!
             tractorMake.setText(tractor.make)
-            tractorModel.setText(tractor.model)
+            tractorPrice.setText(tractor.price)
             tractorImage.setImageBitmap(readImageFromPath(this, tractor.image))
             btnAdd.setText(R.string.button_updateTractor)
             chooseImage.setText(R.string.button_updateImage)
@@ -52,7 +69,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
 
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
-            tractor.model = tractorModel.text.toString()
+            tractor.price = tractorPrice.text.toString()
 
             if (tractor.make.isEmpty()) {
                 toast(R.string.enter_tractorMake)
@@ -67,9 +84,14 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
             setResult(RESULT_OK)
             finish()
         }
+
         chooseImage.setOnClickListener {
             showImagePicker(this, imageRequest)
         }
+
+
+
+
 
     }
 

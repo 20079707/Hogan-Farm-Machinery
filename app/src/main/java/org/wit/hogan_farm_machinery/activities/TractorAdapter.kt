@@ -37,7 +37,7 @@ class TractorAdapter constructor(private var tractors: List<TractorModel>,
 
         fun bind(tractor: TractorModel, listener: TractorListener) {
             itemView.tractorMake.text = tractor.make
-            itemView.tractorModel.text = tractor.model
+            itemView.tractorPrice.text = tractor.price
             itemView.setOnClickListener { listener.onTractorClick(tractor) }
         }
     }

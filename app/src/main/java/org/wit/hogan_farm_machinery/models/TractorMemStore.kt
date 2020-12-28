@@ -27,10 +27,11 @@ class TractorMemStore : TractorStore, AnkoLogger {
         val foundTractor: TractorModel? = tractors.find { p -> p.id == tractor.id }
         if (foundTractor != null) {
             foundTractor.make = tractor.make
-            foundTractor.model = tractor.model
+            foundTractor.price = tractor.price
             foundTractor.image = tractor.image
             foundTractor.radio1 = tractor.radio1
             foundTractor.radio2 = tractor.radio2
+            foundTractor.category = tractor.category
             logAll()
         }
     }
