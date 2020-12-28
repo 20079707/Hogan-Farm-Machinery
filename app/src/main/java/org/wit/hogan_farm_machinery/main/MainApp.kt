@@ -4,7 +4,6 @@ import android.app.Application
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.wit.hogan_farm_machinery.models.TractorMemStore
-import org.wit.hogan_farm_machinery.models.TractorModel
 
 class MainApp : Application(), AnkoLogger {
 

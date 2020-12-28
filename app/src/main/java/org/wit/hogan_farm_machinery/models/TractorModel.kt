@@ -6,6 +6,7 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class TractorModel(var id: Long = 0,
                         var make: String = "",
-                        var model: String = ""
+                        var model: String = "",
+                        var image: String = ""
 ) : Parcelable
 

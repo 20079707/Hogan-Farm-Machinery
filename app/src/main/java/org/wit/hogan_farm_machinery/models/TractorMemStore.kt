@@ -11,7 +11,7 @@ internal fun getId(): Long {
 
 class TractorMemStore : TractorStore, AnkoLogger {
 
-    val tractors = ArrayList<TractorModel>()
+    private val tractors = ArrayList<TractorModel>()
 
     override fun findAll(): List<TractorModel> {
         return tractors
@@ -20,19 +20,20 @@ class TractorMemStore : TractorStore, AnkoLogger {
     override fun create(tractor: TractorModel) {
         tractor.id = getId()
         tractors.add(tractor)
-        logAll();
+        logAll()
     }
 
     override fun update(tractor: TractorModel) {
-        var foundTractor: TractorModel? = tractors.find { p -> p.id == tractor.id }
+        val foundTractor: TractorModel? = tractors.find { p -> p.id == tractor.id }
         if (foundTractor != null) {
             foundTractor.make = tractor.make
             foundTractor.model = tractor.model
+            foundTractor.image = tractor.image
             logAll()
         }
     }
 
-    fun logAll() {
-        tractors.forEach{ info("${it}") }
+    private fun logAll() {
+        tractors.forEach{ info("$it") }
     }
 }

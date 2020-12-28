@@ -1,19 +1,20 @@
 package org.wit.hogan_farm_machinery.activities
 
+import android.content.Intent
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import androidx.core.content.ContentProviderCompat.requireContext
-import androidx.core.widget.doOnTextChanged
-import com.google.android.material.textfield.TextInputLayout
+import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_tractor.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
+import org.wit.hogan_farm_machinery.helpers.readImage
+import org.wit.hogan_farm_machinery.helpers.readImageFromPath
+import org.wit.hogan_farm_machinery.helpers.showImagePicker
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
@@ -21,31 +22,34 @@ import org.wit.hogan_farm_machinery.models.TractorModel
 
 class MainTractor : AppCompatActivity(), AnkoLogger {
 
-    var tractor = TractorModel()
-    lateinit var app: MainApp
-
+    private var tractor = TractorModel()
+    private lateinit var app: MainApp
+    private val imageRequest = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tractor)
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
-        info("Placemark Activity started..")
+        info("Tractor Activity started..")
 
         app = application as MainApp
         var edit = false
 
         if (intent.hasExtra("tractor_edit")) {
             edit = true
-            tractor = intent.extras?.getParcelable<TractorModel>("tractor_edit")!!
+            tractor = intent.extras?.getParcelable("tractor_edit")!!
             tractorMake.setText(tractor.make)
             tractorModel.setText(tractor.model)
+            tractorImage.setImageBitmap(readImageFromPath(this, tractor.image))
             btnAdd.setText(R.string.button_updateTractor)
+            chooseImage.setText(R.string.button_updateImage)
         }
 
-        btnAdd.setOnClickListener() {
+        btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
             tractor.model = tractorModel.text.toString()
+
             if (tractor.make.isEmpty()) {
                 toast(R.string.enter_tractorMake)
             } else {
@@ -55,10 +59,12 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
                     app.tractors.create(tractor.copy())
                 }
             }
-            info("add Button Pressed: ${tractor}")
+            info("add Button Pressed: $tractor")
             setResult(RESULT_OK)
             finish()
-
+        }
+        chooseImage.setOnClickListener {
+            showImagePicker(this, imageRequest)
         }
     }
 
@@ -75,7 +81,18 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         }
         return super.onOptionsItemSelected(item)
     }
-
+    @RequiresApi(Build.VERSION_CODES.P)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        when (requestCode) {
+            imageRequest -> {
+                if (data != null) {
+                    tractor.image = data.data.toString()
+                    tractorImage.setImageBitmap(readImage(this, resultCode, data))
+                }
+            }
+        }
+    }
 }
 
 
