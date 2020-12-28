@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
@@ -27,6 +28,10 @@ class TractorList : AppCompatActivity(), TractorListener {
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = TractorAdapter(app.tractors.findAll(), this)
+
+        fab.setOnClickListener {
+            startActivityForResult<MainTractor>(0)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,12 +39,7 @@ class TractorList : AppCompatActivity(), TractorListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.item_add -> startActivityForResult<MainTractor>(0)
-        }
-        return super.onOptionsItemSelected(item)
-    }
+
     override fun onTractorClick(tractor: TractorModel) {
         startActivityForResult(intentFor<MainTractor>().putExtra("tractor_edit", tractor), 0)
     }

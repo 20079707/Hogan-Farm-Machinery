@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.RadioButton
+import android.widget.RadioGroup
 import androidx.annotation.RequiresApi
 import kotlinx.android.synthetic.main.activity_tractor.*
 import org.jetbrains.anko.AnkoLogger
@@ -45,6 +48,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.button_updateTractor)
             chooseImage.setText(R.string.button_updateImage)
         }
+        
 
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
@@ -66,6 +70,26 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         chooseImage.setOnClickListener {
             showImagePicker(this, imageRequest)
         }
+
+    }
+
+    fun onRadioButtonClicked(view: View) {
+        if (view is RadioButton) {
+            // Is the button now checked?
+            val checked = view.isChecked
+
+            when (view.getId()) {
+                R.id.radio_for_sale ->
+                    if (checked) {
+                        tractor.radio1 = radio_for_sale.text.toString()
+                    }
+                R.id.radio_wanted ->
+                    if (checked) {
+                        tractor.radio2 = radio_wanted.text.toString()
+                    }
+            }
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -81,6 +105,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         }
         return super.onOptionsItemSelected(item)
     }
+
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

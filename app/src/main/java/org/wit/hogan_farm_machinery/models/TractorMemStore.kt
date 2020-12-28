@@ -29,6 +29,8 @@ class TractorMemStore : TractorStore, AnkoLogger {
             foundTractor.make = tractor.make
             foundTractor.model = tractor.model
             foundTractor.image = tractor.image
+            foundTractor.radio1 = tractor.radio1
+            foundTractor.radio2 = tractor.radio2
             logAll()
         }
     }

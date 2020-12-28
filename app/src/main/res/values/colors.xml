@@ -3,7 +3,7 @@
     <color name="colourBackground">#F5F4F2</color>
     <color name="colourToolBar">#C6878F</color>
     <color name="colourStatusBar">#67697C</color>
-    <color name="colourAddButton">#253D5B</color>
+    <color name="colourAddButton">#C6878F</color>
     <color name="red">#FF0000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>

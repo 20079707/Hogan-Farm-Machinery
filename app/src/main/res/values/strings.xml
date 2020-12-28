@@ -16,5 +16,8 @@
     <string name="enter_tractorMake">Please Enter a make</string>updateTractor
     <string name="select_image">Select Image</string>
 
+    <string name="for_sale">For Sale</string>
+    <string name="wanted">Wanted</string>
+
     <string name="label">Label</string>
 </resources>
