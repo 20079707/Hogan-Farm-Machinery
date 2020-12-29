@@ -9,9 +9,9 @@ data class TractorModel(var id: Long = 0,
                         var make: String = "",
                         var price:  String = "",
                         var image: String = "",
-                        var radio1: String = "",
-                        var radio2: String = "",
-                        var category: String = ""
+                        var radio1: Boolean = false,
+                        var radio2: Boolean = false,
+                        var category: Boolean = true
 ) : Parcelable
 
 
