@@ -1,22 +1,18 @@
-package org.wit.hogan_farm_machinery.activities
+package org.wit.hogan_farm_machinery.activities.list
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageButton
-import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.tractor_card.*
-import kotlinx.android.synthetic.main.tractor_card.view.*
 import kotlinx.android.synthetic.main.tractor_list.*
-import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
-import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
+import org.wit.hogan_farm_machinery.activities.createAd.MainTractor
+import org.wit.hogan_farm_machinery.activities.TractorAdapter
+import org.wit.hogan_farm_machinery.activities.TractorListener
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 

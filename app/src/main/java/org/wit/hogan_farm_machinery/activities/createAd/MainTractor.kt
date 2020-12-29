@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities
+package org.wit.hogan_farm_machinery.activities.createAd
 
 import android.content.Intent
 import android.os.Build
@@ -12,18 +12,23 @@ import kotlinx.android.synthetic.main.activity_tractor.view.*
 import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
+import org.wit.hogan_farm_machinery.activities.maps.MapsActivity
 import org.wit.hogan_farm_machinery.helpers.readImage
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.helpers.showImagePicker
 import org.wit.hogan_farm_machinery.main.MainApp
+import org.wit.hogan_farm_machinery.models.Location
 import org.wit.hogan_farm_machinery.models.TractorModel
 
 
 
 class MainTractor : AppCompatActivity(), AnkoLogger {
 
+    val LOCATION_REQUEST = 2
+    var location = Location(52.245696, -7.139102, 15f)
     private var tractor = TractorModel()
     private lateinit var app: MainApp
     private val imageRequest = 1
@@ -90,6 +95,15 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         chooseImage.setOnClickListener {
             showImagePicker(this, imageRequest)
         }
+        selectLocation.setOnClickListener {
+            val location = Location(52.245696, -7.139102, 15f)
+            if (tractor.zoom != 0f) {
+                location.lat =  tractor.lat
+                location.lng = tractor.lng
+                location.zoom = tractor.zoom
+            }
+            startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+        }
     }
 
     fun onRadioButtonClicked(view: View) {
@@ -148,6 +162,20 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
                 if (data != null) {
                     tractor.image = data.data.toString()
                     tractorImage.setImageBitmap(readImage(this, resultCode, data))
+                }
+            }
+            LOCATION_REQUEST -> {
+                if (data != null) {
+                    val location = data.extras?.getParcelable<Location>("location")
+                    if (location != null) {
+                        tractor.lat = location.lat
+                    }
+                    if (location != null) {
+                        tractor.lng = location.lng
+                    }
+                    if (location != null) {
+                        tractor.zoom = location.zoom
+                    }
                 }
             }
         }

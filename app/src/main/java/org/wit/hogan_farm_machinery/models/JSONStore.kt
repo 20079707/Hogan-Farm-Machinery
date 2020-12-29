@@ -50,6 +50,9 @@ class JSONStore : TractorStore, AnkoLogger {
             foundTractor.radio1 = tractor.radio1
             foundTractor.radio2 = tractor.radio2
             foundTractor.category = tractor.category
+            foundTractor.lat = tractor.lat
+            foundTractor.lng = tractor.lng
+            foundTractor.zoom = tractor.zoom
         }
         serialize()
     }

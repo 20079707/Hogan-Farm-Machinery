@@ -12,6 +12,7 @@
     <string name="button_updateTractor">Save Changes</string>
     <string name="button_addImage"> Add Image </string>
     <string name="button_updateImage">Change Image</string>
+    <string name="button_location">Set Location</string>
     <string name="menu_deleteTractor">Delete</string>
 
 
@@ -35,4 +36,5 @@
         <item>Silage Harvesters</item>
         <item>Front Loaders</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
 </resources>
