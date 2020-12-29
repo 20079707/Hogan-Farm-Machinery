@@ -47,6 +47,7 @@ class JSONStore : TractorStore, AnkoLogger {
             foundTractor.make = tractor.make
             foundTractor.price = tractor.price
             foundTractor.image = tractor.image
+            foundTractor.description = tractor.description
             foundTractor.radio1 = tractor.radio1
             foundTractor.radio2 = tractor.radio2
             foundTractor.category = tractor.category

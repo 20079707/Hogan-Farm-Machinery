@@ -69,6 +69,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
             tractor = intent.extras?.getParcelable("tractor_edit")!!
             tractorMake.setText(tractor.make)
             tractorPrice.setText(tractor.price)
+            tractorDescription.setText(tractor.description)
             tractorImage.setImageBitmap(readImageFromPath(this, tractor.image))
             btnAdd.setText(R.string.button_updateTractor)
             chooseImage.setText(R.string.button_updateImage)
@@ -78,6 +79,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
             tractor.price = tractorPrice.text.toString()
+            tractor.description = tractorDescription.text.toString()
             if (tractor.make.isEmpty()) {
                 toast(R.string.enter_tractorMake)
             } else {
