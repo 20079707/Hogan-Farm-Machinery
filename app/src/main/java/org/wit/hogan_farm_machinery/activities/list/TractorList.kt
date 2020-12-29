@@ -46,12 +46,13 @@ class TractorList : AppCompatActivity(), TractorListener {
     }
 
 
-    /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_add -> startActivityForResult<MainTractor>(0)
+            /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
+
         }
         return super.onOptionsItemSelected(item)
-    }*/
+    }
 
     override fun onDeleteClick(button: ImageButton) {
         when (button.id) {
