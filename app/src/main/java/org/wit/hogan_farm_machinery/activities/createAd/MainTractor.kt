@@ -32,7 +32,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
     private var tractor = TractorModel()
     private lateinit var app: MainApp
     private val imageRequest = 1
-
+    var edit = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -108,12 +108,13 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         }
     }
 
+
+
     fun onRadioButtonClicked(view: View) {
 
         if (view is RadioButton) {
             // Is the button now checked?
             val checked = view.isChecked
-            val edit = false
             when (view.getId()) {
                 R.id.radio_for_sale ->
                     if (checked) {
@@ -131,9 +132,6 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
                         Toast.makeText(applicationContext,"Wanted selected",
                                 Toast.LENGTH_SHORT).show()
                     }else {
-                        if(edit) {
-                            tractor.radio2 = false
-                        }
                         tractor.radio2 = false
 
                     }
@@ -144,11 +142,16 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_tractor, menu)
+        if (edit && menu != null) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+            R.id.item_delete -> {
+                app.tractors.delete(tractor)
+                finish()
+            }
             R.id.item_cancel -> {
                 finish()
             }
