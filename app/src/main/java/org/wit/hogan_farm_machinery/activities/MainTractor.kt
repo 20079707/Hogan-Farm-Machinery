@@ -9,6 +9,7 @@ import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_tractor.*
 import kotlinx.android.synthetic.main.activity_tractor.view.*
+import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.toast
@@ -18,6 +19,7 @@ import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.helpers.showImagePicker
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
+
 
 
 class MainTractor : AppCompatActivity(), AnkoLogger {
@@ -35,14 +37,13 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         info("Tractor Activity started..")
 
 
-
         app = application as MainApp
         var edit = false
+
 
         val data = resources.getStringArray(R.array.category_array)
         val adapter = ArrayAdapter(this, R.layout.spinner_item_selected, data)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-
 
         val spinner = findViewById<Spinner>(R.id.categorySpinner)
         spinner.adapter = adapter
@@ -90,11 +91,6 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         chooseImage.setOnClickListener {
             showImagePicker(this, imageRequest)
         }
-
-
-
-
-
     }
 
     fun onRadioButtonClicked(view: View) {
@@ -105,12 +101,12 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
             when (view.getId()) {
                 R.id.radio_for_sale ->
                     if (checked) {
-                        Toast.makeText(applicationContext,"On button click : For Sale selected",
+                        Toast.makeText(applicationContext,"For Sale selected",
                                 Toast.LENGTH_SHORT).show()
                     }
                 R.id.radio_wanted ->
                     if (checked) {
-                        Toast.makeText(applicationContext,"On button click : Wanted selected",
+                        Toast.makeText(applicationContext,"Wanted selected",
                                 Toast.LENGTH_SHORT).show()
                     }
             }
