@@ -34,19 +34,21 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         setSupportActionBar(toolbarAdd)
         info("Tractor Activity started..")
 
+
+
         app = application as MainApp
         var edit = false
 
         val data = resources.getStringArray(R.array.category_array)
-
         val adapter = ArrayAdapter(this, R.layout.spinner_item_selected, data)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
-
 
 
         val spinner = findViewById<Spinner>(R.id.categorySpinner)
         spinner.adapter = adapter
         spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+
+
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 Toast.makeText(this@MainTractor, parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
             }
@@ -103,11 +105,13 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
             when (view.getId()) {
                 R.id.radio_for_sale ->
                     if (checked) {
-                        tractor.radio1 = radio_for_sale.text.toString()
+                        Toast.makeText(applicationContext,"On button click : For Sale selected",
+                                Toast.LENGTH_SHORT).show()
                     }
                 R.id.radio_wanted ->
                     if (checked) {
-                        tractor.radio2 = radio_wanted.text.toString()
+                        Toast.makeText(applicationContext,"On button click : Wanted selected",
+                                Toast.LENGTH_SHORT).show()
                     }
             }
         }

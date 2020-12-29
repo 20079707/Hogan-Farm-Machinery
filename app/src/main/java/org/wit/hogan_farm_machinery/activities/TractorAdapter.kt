@@ -4,7 +4,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.tractor_card.view.*
+import kotlinx.android.synthetic.main.tractor_card.view.tractorMake
+import kotlinx.android.synthetic.main.tractor_card.view.tractorPrice
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.models.TractorModel
 
