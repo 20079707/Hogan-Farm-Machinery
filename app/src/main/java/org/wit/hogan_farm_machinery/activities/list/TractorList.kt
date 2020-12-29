@@ -6,6 +6,7 @@ import android.view.*
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.tractor_card.*
 import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
@@ -26,6 +27,7 @@ class TractorList : AppCompatActivity(), TractorListener {
         setContentView(R.layout.tractor_list)
         app = application as MainApp
 
+
         toolbar.title = title
         setSupportActionBar(toolbar)
 
@@ -38,6 +40,7 @@ class TractorList : AppCompatActivity(), TractorListener {
         fab.setOnClickListener {
             startActivityForResult<MainTractor>(0)
         }
+        
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -54,8 +57,8 @@ class TractorList : AppCompatActivity(), TractorListener {
         return super.onOptionsItemSelected(item)
     }
 
-    override fun onDeleteClick(button: ImageButton) {
-        when (button.id) {
+    override fun onDeleteClick(item: MenuItem) {
+        when (item.itemId) {
             R.id.button_delete -> {
             app.tractors.delete(tractor)
             }

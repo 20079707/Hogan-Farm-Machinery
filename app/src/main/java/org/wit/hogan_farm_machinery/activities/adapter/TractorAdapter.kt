@@ -1,6 +1,7 @@
 package org.wit.hogan_farm_machinery.activities
 
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
@@ -12,7 +13,7 @@ import org.wit.hogan_farm_machinery.models.TractorModel
 
 interface TractorListener {
     fun onTractorClick(tractor: TractorModel)
-    fun onDeleteClick(button: ImageButton)
+    fun onDeleteClick(item: MenuItem)
 }
 
 class TractorAdapter constructor(private var tractors: List<TractorModel>,
