@@ -4,5 +4,6 @@ interface TractorStore {
     fun findAll(): List<TractorModel>
     fun create(tractor: TractorModel)
     fun update(tractor: TractorModel)
+    fun delete(tractor: TractorModel)
 
 }

@@ -54,6 +54,10 @@ class JSONStore : TractorStore, AnkoLogger {
         serialize()
     }
 
+    override fun delete(tractor: TractorModel) {
+        tractors.remove(tractor)
+        serialize()
+    }
 
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(tractors, listType)

@@ -3,12 +3,19 @@ package org.wit.hogan_farm_machinery.activities
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import kotlinx.android.synthetic.main.tractor_card.*
+import kotlinx.android.synthetic.main.tractor_card.view.*
 import kotlinx.android.synthetic.main.tractor_list.*
+import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivityForResult
+import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
@@ -16,6 +23,7 @@ import org.wit.hogan_farm_machinery.models.TractorModel
 class TractorList : AppCompatActivity(), TractorListener {
 
     lateinit var app: MainApp
+    var tractor = TractorModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +49,7 @@ class TractorList : AppCompatActivity(), TractorListener {
         return super.onCreateOptionsMenu(menu)
     }
 
+
     /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_add -> startActivityForResult<MainTractor>(0)
@@ -48,9 +57,19 @@ class TractorList : AppCompatActivity(), TractorListener {
         return super.onOptionsItemSelected(item)
     }*/
 
+    override fun onDeleteClick(button: ImageButton) {
+        when (button.id) {
+            R.id.button_delete -> {
+            app.tractors.delete(tractor)
+            }
+        }
+    }
+
     override fun onTractorClick(tractor: TractorModel) {
         startActivityForResult(intentFor<MainTractor>().putExtra("tractor_edit", tractor), 0)
     }
+
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         loadTractors()
         super.onActivityResult(requestCode, resultCode, data)

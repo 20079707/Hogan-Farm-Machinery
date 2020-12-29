@@ -12,6 +12,8 @@
     <string name="button_updateTractor">Save Changes</string>
     <string name="button_addImage"> Add Image </string>
     <string name="button_updateImage">Change Image</string>
+    <string name="menu_deleteTractor">Delete</string>
+
 
     <string name="hint_tractorMake">Make &amp; Model</string>
     <string name="hint_tractorPrice">Price</string>

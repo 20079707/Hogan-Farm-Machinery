@@ -36,6 +36,10 @@ class TractorMemStore : TractorStore, AnkoLogger {
         }
     }
 
+    override fun delete(tractor: TractorModel) {
+        tractors.remove(tractor)
+    }
+
     private fun logAll() {
         tractors.forEach{ info("$it") }
     }

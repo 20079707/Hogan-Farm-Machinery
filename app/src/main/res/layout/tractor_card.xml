@@ -11,18 +11,38 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <ImageView
+            android:id="@+id/imageIcon"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="16dp"/>
+
         <TextView
             android:id="@+id/tractorMake"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
-            android:textSize="30sp" />
+            android:layout_toEndOf="@+id/imageIcon"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tractorPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/imageIcon"
             android:layout_below="@id/tractorMake" />
+
+        <ImageButton
+            android:id="@+id/button_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_delete_54" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

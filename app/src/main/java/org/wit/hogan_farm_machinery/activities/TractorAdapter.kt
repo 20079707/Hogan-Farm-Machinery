@@ -3,14 +3,16 @@ package org.wit.hogan_farm_machinery.activities
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.tractor_card.view.tractorMake
-import kotlinx.android.synthetic.main.tractor_card.view.tractorPrice
+import kotlinx.android.synthetic.main.tractor_card.view.*
 import org.wit.hogan_farm_machinery.R
+import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.models.TractorModel
 
 interface TractorListener {
     fun onTractorClick(tractor: TractorModel)
+    fun onDeleteClick(button: ImageButton)
 }
 
 class TractorAdapter constructor(private var tractors: List<TractorModel>,
@@ -39,6 +41,7 @@ class TractorAdapter constructor(private var tractors: List<TractorModel>,
         fun bind(tractor: TractorModel, listener: TractorListener) {
             itemView.tractorMake.text = tractor.make
             itemView.tractorPrice.text = tractor.price
+            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, tractor.image))
             itemView.setOnClickListener { listener.onTractorClick(tractor) }
         }
     }
