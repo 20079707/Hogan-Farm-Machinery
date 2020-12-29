@@ -73,7 +73,6 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
             tractor.price = tractorPrice.text.toString()
-
             if (tractor.make.isEmpty()) {
                 toast(R.string.enter_tractorMake)
             } else {
@@ -94,20 +93,33 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
     }
 
     fun onRadioButtonClicked(view: View) {
+
         if (view is RadioButton) {
             // Is the button now checked?
             val checked = view.isChecked
-
+            val edit = false
             when (view.getId()) {
                 R.id.radio_for_sale ->
                     if (checked) {
+                        tractor.radio1 = true
                         Toast.makeText(applicationContext,"For Sale selected",
                                 Toast.LENGTH_SHORT).show()
+
+                    } else {
+                        tractor.radio1 = false
+
                     }
                 R.id.radio_wanted ->
                     if (checked) {
+                        tractor.radio2 = true
                         Toast.makeText(applicationContext,"Wanted selected",
                                 Toast.LENGTH_SHORT).show()
+                    }else {
+                        if(edit) {
+                            tractor.radio2 = false
+                        }
+                        tractor.radio2 = false
+
                     }
             }
         }
