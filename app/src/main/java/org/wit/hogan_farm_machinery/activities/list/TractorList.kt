@@ -8,11 +8,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.activities.createAd.MainTractor
-import org.wit.hogan_farm_machinery.activities.TractorAdapter
-import org.wit.hogan_farm_machinery.activities.TractorListener
+import org.wit.hogan_farm_machinery.activities.adapter.TractorAdapter
+import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
+import org.wit.hogan_farm_machinery.activities.maps.TractorMapsActivity
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
@@ -26,8 +28,14 @@ class TractorList : AppCompatActivity(), TractorListener {
         setContentView(R.layout.tractor_list)
         app = application as MainApp
 
+
         toolbar.title = title
         setSupportActionBar(toolbar)
+
+
+        toolbar.title = title
+        setSupportActionBar(toolbar)
+
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
@@ -38,6 +46,7 @@ class TractorList : AppCompatActivity(), TractorListener {
         fab.setOnClickListener {
             startActivityForResult<MainTractor>(0)
         }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -48,7 +57,12 @@ class TractorList : AppCompatActivity(), TractorListener {
 
     /*override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
+
             R.id.item_add -> startActivityForResult<MainTractor>(0)
+
+            /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
+            R.id.item_map -> startActivity<TractorMapsActivity>()
+
         }
         return super.onOptionsItemSelected(item)
     }*/

@@ -1,9 +1,8 @@
-package org.wit.hogan_farm_machinery.activities
+package org.wit.hogan_farm_machinery.activities.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.tractor_card.view.*
 import org.wit.hogan_farm_machinery.R
@@ -16,7 +15,8 @@ interface TractorListener {
 }
 
 class TractorAdapter constructor(private var tractors: List<TractorModel>,
-                                 private val listener: TractorListener) :
+                                 private val listener: TractorListener
+) :
     RecyclerView.Adapter<TractorAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
