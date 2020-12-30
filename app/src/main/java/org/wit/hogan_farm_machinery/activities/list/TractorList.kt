@@ -7,13 +7,16 @@ import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.tractor_card.*
+import kotlinx.android.synthetic.main.activity_tractor_maps.*
 import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.intentFor
+import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.activities.createAd.MainTractor
-import org.wit.hogan_farm_machinery.activities.TractorAdapter
-import org.wit.hogan_farm_machinery.activities.TractorListener
+import org.wit.hogan_farm_machinery.activities.adapter.TractorAdapter
+import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
+import org.wit.hogan_farm_machinery.activities.maps.TractorMapsActivity
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
@@ -31,6 +34,7 @@ class TractorList : AppCompatActivity(), TractorListener {
         toolbar.title = title
         setSupportActionBar(toolbar)
 
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = TractorAdapter(app.tractors.findAll(), this)
@@ -40,7 +44,6 @@ class TractorList : AppCompatActivity(), TractorListener {
         fab.setOnClickListener {
             startActivityForResult<MainTractor>(0)
         }
-        
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -52,6 +55,11 @@ class TractorList : AppCompatActivity(), TractorListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
+
+
+            /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
+            R.id.item_map -> startActivity<TractorMapsActivity>()
+
 
         }
         return super.onOptionsItemSelected(item)

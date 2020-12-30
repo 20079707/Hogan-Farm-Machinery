@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities
+package org.wit.hogan_farm_machinery.activities.adapter
 
 import android.view.LayoutInflater
 import android.view.MenuItem
@@ -17,7 +17,8 @@ interface TractorListener {
 }
 
 class TractorAdapter constructor(private var tractors: List<TractorModel>,
-                                 private val listener: TractorListener) :
+                                 private val listener: TractorListener
+) :
     RecyclerView.Adapter<TractorAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {

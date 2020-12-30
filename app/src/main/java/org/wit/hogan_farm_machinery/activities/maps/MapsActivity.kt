@@ -12,16 +12,20 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import org.wit.hogan_farm_machinery.R
+import org.wit.hogan_farm_machinery.databinding.ActivityMapsBinding
 import org.wit.hogan_farm_machinery.models.Location
 
 class MapsActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener  {
 
+    private lateinit var binding: ActivityMapsBinding
     private lateinit var map: GoogleMap
     private var location = Location()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_maps)
+        binding = ActivityMapsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         location = intent.extras?.getParcelable("location")!!
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment

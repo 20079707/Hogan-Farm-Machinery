@@ -7,227 +7,244 @@
     android:layout_height="match_parent"
     tools:context=".activities.createAd.MainTractor">
 
-    <RelativeLayout
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colourToolBar"
+        android:fitsSystemWindows="true"
+        app:elevation="0dip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:theme="@style/Theme.HoganFarmMachinery.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbarAdd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:titleTextColor="@color/white" />
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:padding="8dp"
+        android:text="@string/adDetails"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black"
+        android:textSize="12pt"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/text"/>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="675dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/line"
+        android:paddingBottom="10dp">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             tools:ignore="UselessParent">
 
-        <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colourToolBar"
-            android:fitsSystemWindows="true"
-            app:elevation="0dip"
-            app:theme="@style/Theme.HoganFarmMachinery.AppBarOverlay">
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbarAdd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:titleTextColor="@color/white" />
-        </com.google.android.material.appbar.AppBarLayout>
-
-            <TextView
-                android:id="@+id/text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="@string/adDetails"
-                android:padding="8dp"
-                android:textSize="12pt"
-                android:textColor="@color/black"/>
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@color/black"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"/>
-
-            <RadioGroup
-                android:id="@+id/radioButtons"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="90dp"
-                android:orientation="horizontal">
-
-                <RadioButton
-                    android:id="@+id/radio_for_sale"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/for_sale" />
-
-                <RadioButton
-                    android:id="@+id/radio_wanted"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:onClick="onRadioButtonClicked"
-                    android:text="@string/wanted" />
-
-            </RadioGroup>
-
-            <Spinner
-                android:id="@+id/categorySpinner"
-                style="@style/Widget.AppCompat.Spinner"
-                android:layout_width="match_parent"
-                android:layout_height="?attr/dropdownListPreferredItemHeight"
-                android:layout_margin="10dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/spinner_bg"
-                android:dropDownWidth="300dp"
-                android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
-                android:paddingEnd="14dp"
-                android:popupBackground="@android:color/white"
-                android:popupElevation="3dp"
-                android:stateListAnimator="@drawable/spinner_sla"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="RtlSymmetry" />
-
             <LinearLayout
-                android:id="@+id/LinearLayout02"
-                android:layout_height="wrap_content"
-                android:layout_width="match_parent">
-
-            <Button
-                android:id="@+id/chooseImage"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/colourAddButton"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="@string/button_addImage"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-
-            <Button
-                android:id="@+id/selectLocation"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="5dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@color/colourAddButton"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp"
-                android:text="@string/button_location"
-                android:textColor="@color/white"
-                android:textSize="16sp" />
-
-        </LinearLayout>
-
-
-        <ImageView
-            android:id="@+id/tractorImage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"/>
-
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/make"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
-
-            <EditText
-                android:id="@+id/tractorMake"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/hint_tractorMake"
-                android:inputType="text"
-                android:maxLength="25"
-                android:maxLines="1"
-                android:textColor="@color/black"
-                android:background="@color/grey"
-                android:textSize="14sp" >
-
-            </EditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="vertical">
 
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp">
+                <RadioGroup
+                    android:id="@+id/radioButtons"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:orientation="horizontal">
 
-        <EditText
-            android:id="@+id/tractorPrice"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/hint_tractorPrice"
-            android:inputType="text"
-            android:maxLength="25"
-            android:maxLines="1"
-            android:textColor="@color/black"
-            android:background="@color/grey"
-            android:textSize="14sp" >
+                    <RadioButton
+                        android:id="@+id/radio_for_sale"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/for_sale" />
 
-        </EditText>
-        </com.google.android.material.textfield.TextInputLayout>
+                    <RadioButton
+                        android:id="@+id/radio_wanted"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="50dp"
+                        android:onClick="onRadioButtonClicked"
+                        android:text="@string/wanted" />
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="8dp">
+                </RadioGroup>
 
-                <EditText
-                    android:id="@+id/tractorDescription"
+                <Spinner
+                    android:id="@+id/categorySpinner"
+                    style="@style/Widget.AppCompat.Spinner"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/dropdownListPreferredItemHeight"
+                    android:layout_margin="10dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/spinner_bg"
+                    android:dropDownWidth="300dp"
+                    android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+                    android:paddingEnd="14dp"
+                    android:popupBackground="@android:color/white"
+                    android:popupElevation="3dp"
+                    android:stateListAnimator="@drawable/spinner_sla"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:ignore="RtlSymmetry" />
+
+                <LinearLayout
+                    android:id="@+id/LinearLayout02"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/chooseImage"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/colourAddButton"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/button_addImage"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        tools:ignore="ButtonStyle" />
+
+
+                    <Button
+                        android:id="@+id/selectLocation"
+                        android:layout_width="180dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/colourAddButton"
+                        android:paddingTop="8dp"
+                        android:paddingBottom="8dp"
+                        android:text="@string/button_location"
+                        android:textColor="@color/white"
+                        android:textSize="16sp"
+                        tools:ignore="ButtonStyle" />
+
+                </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/make"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/hint_tractorDescription"
-                    android:inputType="text"
-                    android:maxLength="200"
-                    android:maxLines="7"
-                    android:textColor="@color/black"
-                    android:background="@color/grey"
-                    android:textSize="14sp" >
+                    android:padding="8dp">
 
-                </EditText>
-            </com.google.android.material.textfield.TextInputLayout>
+                    <EditText
+                        android:id="@+id/tractorMake"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/grey"
+                        android:hint="@string/hint_tractorMake"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:ignore="Autofill">
 
-            <Button
-            android:id="@+id/btnAdd"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="16dp"
-            android:background="@color/colourAddButton"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
-            android:stateListAnimator="@null"
-            android:text="@string/button_addTractor"
-            android:textColor="@color/white"
-            android:textSize="16sp"/>
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
 
-        </LinearLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+
+                    <EditText
+                        android:id="@+id/tractorPrice"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/grey"
+                        android:hint="@string/hint_tractorPrice"
+                        android:inputType="text"
+                        android:maxLength="25"
+                        android:maxLines="1"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:ignore="Autofill">
+
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp">
+
+                    <EditText
+                        android:id="@+id/tractorDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/grey"
+                        android:hint="@string/hint_tractorDescription"
+                        android:inputType="text"
+                        android:maxLength="200"
+                        android:maxLines="7"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        tools:ignore="Autofill">
+
+                    </EditText>
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <ImageView
+                    android:id="@+id/tractorImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    tools:ignore="ContentDescription" />
+
+            </LinearLayout>
 
         </ScrollView>
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/btnAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colourAddButton"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:stateListAnimator="@null"
+        android:text="@string/button_addTractor"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="16dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

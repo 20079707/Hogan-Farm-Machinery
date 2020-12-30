@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.wit.hogan_farm_machinery">
+
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
@@ -11,21 +12,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HoganFarmMachinery">
+        <activity
+            android:name=".activities.maps.TractorMapsActivity"
+            android:label="@string/title_activity_tractor_maps"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar"></activity>
+
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
         <activity
             android:name=".activities.maps.MapsActivity"
-            android:label="@string/title_activity_maps">
-
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
         <activity
             android:name=".activities.createAd.MainTractor"
             android:label="@string/addTractor"
-            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
-
-        </activity>
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar"></activity>
         <activity
             android:name=".activities.list.TractorList"
             android:label="@string/listTractors"
