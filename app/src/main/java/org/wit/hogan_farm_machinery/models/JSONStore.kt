@@ -6,27 +6,30 @@ import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.jetbrains.anko.AnkoLogger
 import org.wit.hogan_farm_machinery.helpers.*
+import java.lang.reflect.Type
 import java.util.*
 import kotlin.collections.ArrayList
 
-val JSON_FILE = "tractors.json"
-val gsonBuilder = GsonBuilder().setPrettyPrinting().create()
-val listType = object : TypeToken<java.util.ArrayList<TractorModel>>() {}.type
+const val JSON_FILE = "tractors.json"
+val gsonBuilder: Gson = GsonBuilder().setPrettyPrinting().create()
+val listType: Type = object : TypeToken<java.util.ArrayList<TractorModel>>() {}.type
 
 fun generateRandomId(): Long {
     return Random().nextLong()
 }
 
-class JSONStore : TractorStore, AnkoLogger {
+class JSONStore(val context: Context) : TractorStore, AnkoLogger {
 
-    val context: Context
-    var tractors = mutableListOf<TractorModel>()
+    private var tractors = mutableListOf<TractorModel>()
 
-    constructor (context: Context) {
-        this.context = context
+    init {
         if (exists(context, JSON_FILE)) {
             deserialize()
         }
+    }
+
+    override fun findById(id: Long): TractorModel? {
+        return tractors.find { it.id == id }
     }
 
     override fun findAll(): MutableList<TractorModel> {

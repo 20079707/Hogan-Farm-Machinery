@@ -13,7 +13,7 @@
         android:id="@+id/cardView"
         android:layout_width="378dp"
         android:layout_height="146dp"
-        android:layout_marginBottom="36dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" >
@@ -23,7 +23,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/currentTitle"
+                android:id="@+id/currentMake"
                 android:layout_width="135dp"
                 android:layout_height="25dp"
                 android:layout_marginEnd="8dp"
@@ -35,7 +35,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/currentDescription"
+                android:id="@+id/currentPrice"
                 android:layout_width="135dp"
                 android:layout_height="25dp"
                 android:layout_marginBottom="8dp"
@@ -46,7 +46,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.35"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/currentTitle"
+                app:layout_constraintTop_toBottomOf="@+id/currentMake"
                 app:layout_constraintVertical_bias="0.425" />
 
             <ImageView
@@ -66,11 +66,14 @@
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="358dp"
-        android:layout_height="379dp"
-        android:layout_marginBottom="68dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"  />
 </androidx.constraintlayout.widget.ConstraintLayout>

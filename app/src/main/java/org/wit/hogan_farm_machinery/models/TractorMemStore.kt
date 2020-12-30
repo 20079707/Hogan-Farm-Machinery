@@ -12,6 +12,9 @@ internal fun getId(): Long {
 class TractorMemStore : TractorStore, AnkoLogger {
 
     private val tractors = ArrayList<TractorModel>()
+    override fun findById(id: Long): TractorModel? {
+        return tractors.find { it.id == id }
+    }
 
     override fun findAll(): List<TractorModel> {
         return tractors
