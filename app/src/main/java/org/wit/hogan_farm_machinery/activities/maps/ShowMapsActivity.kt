@@ -12,8 +12,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.content_tractor_maps.*
 import org.jetbrains.anko.startActivity
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.activities.list.ListActivity
+import org.wit.hogan_farm_machinery.activities.home.HomeActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp
@@ -45,7 +45,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
                     startActivity<ListActivity>()
                 }
                 R.id.home -> {
-                    startActivity<PlaceAdActivity>()
+                    startActivity<HomeActivity>()
                 }
                 R.id.map ->{
                     startActivity<ShowMapsActivity>()

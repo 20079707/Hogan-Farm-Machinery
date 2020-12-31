@@ -12,9 +12,10 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.activities.adapter.TractorAdapter
+import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
+import org.wit.hogan_farm_machinery.activities.home.HomeActivity
 import org.wit.hogan_farm_machinery.activities.maps.ShowMapsActivity
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
@@ -39,7 +40,7 @@ class ListActivity : AppCompatActivity(), TractorListener {
                     startActivity<ListActivity>()
                 }
                 R.id.home -> {
-                        startActivity<PlaceAdActivity>()
+                        startActivity<HomeActivity>()
                 }
                 R.id.map ->{
                         startActivity<ShowMapsActivity>()

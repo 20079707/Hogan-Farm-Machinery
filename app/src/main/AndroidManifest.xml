@@ -34,9 +34,16 @@
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
 
         </activity>
+
         <activity
             android:name=".activities.list.ListActivity"
-            android:label="@string/listTractors"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".activities.home.HomeActivity"
+            android:label="@string/app_name"
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
