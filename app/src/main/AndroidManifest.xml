@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HoganFarmMachinery">
         <activity
-            android:name=".activities.maps.TractorMapsActivity"
+            android:name=".activities.maps.ShowMapsActivity"
             android:label="@string/title_activity_tractor_maps"
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar"></activity>
 
@@ -22,14 +22,14 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".activities.maps.MapsActivity"
+            android:name=".activities.maps.AddMapsActivity"
             android:label="@string/title_activity_maps"></activity>
         <activity
-            android:name=".activities.createAd.MainTractor"
+            android:name=".activities.create_advert.PlaceAdActivity"
             android:label="@string/addTractor"
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar"></activity>
         <activity
-            android:name=".activities.list.TractorList"
+            android:name=".activities.list.ListActivity"
             android:label="@string/listTractors"
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
             <intent-filter>

@@ -6,8 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context=".activities.maps.TractorMapsActivity"
-    tools:showIn="@layout/activity_tractor_maps">
+    tools:context=".activities.maps.ShowMapsActivity"
+    tools:showIn="@layout/activity_all_maps">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"

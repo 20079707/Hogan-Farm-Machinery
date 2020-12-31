@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.createAd
+package org.wit.hogan_farm_machinery.activities.create_advert
 
 import android.content.Intent
 import android.os.Build
@@ -7,15 +7,13 @@ import android.view.*
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_tractor.*
-import kotlinx.android.synthetic.main.activity_tractor.view.*
-import kotlinx.android.synthetic.main.tractor_list.*
+import kotlinx.android.synthetic.main.activity_create_advert.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.maps.MapsActivity
+import org.wit.hogan_farm_machinery.activities.maps.AddMapsActivity
 import org.wit.hogan_farm_machinery.helpers.readImage
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.helpers.showImagePicker
@@ -25,7 +23,7 @@ import org.wit.hogan_farm_machinery.models.TractorModel
 
 
 
-class MainTractor : AppCompatActivity(), AnkoLogger {
+class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
     val LOCATION_REQUEST = 2
     var location = Location(52.245696, -7.139102, 15f)
@@ -36,7 +34,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_tractor)
+        setContentView(R.layout.activity_create_advert)
         toolbarAdd.title = title
         setSupportActionBar(toolbarAdd)
         info("Tractor Activity started..")
@@ -56,7 +54,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
 
 
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                Toast.makeText(this@MainTractor, parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
+                Toast.makeText(this@PlaceAdActivity, parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
@@ -104,7 +102,7 @@ class MainTractor : AppCompatActivity(), AnkoLogger {
                 location.lng = tractor.lng
                 location.zoom = tractor.zoom
             }
-            startActivityForResult(intentFor<MapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+            startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location), LOCATION_REQUEST)
         }
     }
 

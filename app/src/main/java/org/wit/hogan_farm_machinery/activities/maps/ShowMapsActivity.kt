@@ -12,22 +12,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.content_tractor_maps.*
 import org.jetbrains.anko.startActivity
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.createAd.MainTractor
-import org.wit.hogan_farm_machinery.activities.list.TractorList
-import org.wit.hogan_farm_machinery.databinding.ActivityTractorMapsBinding
+import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
+import org.wit.hogan_farm_machinery.activities.list.ListActivity
+import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp
 
 
-class TractorMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
+class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
-    private lateinit var binding: ActivityTractorMapsBinding
+    private lateinit var binding: ActivityAllMapsBinding
     lateinit var map: GoogleMap
     lateinit var app: MainApp
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityTractorMapsBinding.inflate(layoutInflater)
+        binding = ActivityAllMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarMaps)
         app = application as MainApp
@@ -44,13 +44,13 @@ class TractorMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list ->{
-                    startActivity<TractorList>()
+                    startActivity<ListActivity>()
                 }
                 R.id.home -> {
-                    startActivity<MainTractor>()
+                    startActivity<PlaceAdActivity>()
                 }
                 R.id.map ->{
-                    startActivity<TractorMapsActivity>()
+                    startActivity<ShowMapsActivity>()
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -68,7 +68,7 @@ class TractorMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         val tractor = app.tractors.findById(tag)
         currentMake.text = tractor!!.make
         currentPrice.text = tractor.price
-        imageView.setImageBitmap(readImageFromPath(this@TractorMapsActivity, tractor.image))
+        imageView.setImageBitmap(readImageFromPath(this@ShowMapsActivity, tractor.image))
         return true
 
     }

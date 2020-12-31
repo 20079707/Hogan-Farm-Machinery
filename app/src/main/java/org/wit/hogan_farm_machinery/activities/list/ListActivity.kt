@@ -3,34 +3,30 @@ package org.wit.hogan_farm_machinery.activities.list
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import android.widget.ImageButton
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.tractor_card.*
-import kotlinx.android.synthetic.main.activity_tractor_maps.*
-import kotlinx.android.synthetic.main.content_tractor_list.*
-import kotlinx.android.synthetic.main.tractor_list.*
+import kotlinx.android.synthetic.main.activity_list.*
+import kotlinx.android.synthetic.main.content_activity_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.createAd.MainTractor
+import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.activities.adapter.TractorAdapter
 import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
-import org.wit.hogan_farm_machinery.activities.maps.TractorMapsActivity
+import org.wit.hogan_farm_machinery.activities.maps.ShowMapsActivity
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
-class TractorList : AppCompatActivity(), TractorListener {
+class ListActivity : AppCompatActivity(), TractorListener {
 
     lateinit var app: MainApp
     var tractor = TractorModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.tractor_list)
+        setContentView(R.layout.activity_list)
         app = application as MainApp
 
         toolbar.title = title
@@ -42,13 +38,13 @@ class TractorList : AppCompatActivity(), TractorListener {
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list ->{
-                    startActivity<TractorList>()
+                    startActivity<ListActivity>()
                 }
                 R.id.home -> {
-                        startActivity<MainTractor>()
+                        startActivity<PlaceAdActivity>()
                 }
                 R.id.map ->{
-                        startActivity<TractorMapsActivity>()
+                        startActivity<ShowMapsActivity>()
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -61,7 +57,7 @@ class TractorList : AppCompatActivity(), TractorListener {
 
 
         fab.setOnClickListener {
-            startActivityForResult<MainTractor>(0)
+            startActivityForResult<PlaceAdActivity>(0)
         }
     }
 
@@ -74,7 +70,7 @@ class TractorList : AppCompatActivity(), TractorListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
-            R.id.item_map -> startActivity<TractorMapsActivity>()
+            R.id.item_map -> startActivity<ShowMapsActivity>()
         }
         return super.onOptionsItemSelected(item)
     }
@@ -86,7 +82,7 @@ class TractorList : AppCompatActivity(), TractorListener {
     }
 
     override fun onTractorClick(tractor: TractorModel) {
-        startActivityForResult(intentFor<MainTractor>().putExtra("tractor_edit", tractor), 0)
+        startActivityForResult(intentFor<PlaceAdActivity>().putExtra("tractor_edit", tractor), 0)
     }
 
 

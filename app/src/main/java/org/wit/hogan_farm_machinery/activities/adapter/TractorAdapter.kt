@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.tractor_card.view.*
+import kotlinx.android.synthetic.main.advert_card.view.*
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.models.TractorModel
@@ -21,7 +20,7 @@ class TractorAdapter constructor(private var tractors: List<TractorModel>, priva
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
             LayoutInflater.from(parent.context).inflate(
-                R.layout.tractor_card,
+                R.layout.advert_card,
                 parent,
                 false
             )
