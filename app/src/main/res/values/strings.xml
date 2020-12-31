@@ -26,6 +26,12 @@
 
     <string name="label">Label</string>
 
+    <string name="nav_list">List</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_map">Maps</string>
+
+    <string name="card_delete">Delete</string>
+
     <string name="selected_item">Selected item:</string>
     <string-array name="category_array">
         <item>Tractors</item>

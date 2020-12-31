@@ -4,10 +4,13 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.tractor_card.*
 import kotlinx.android.synthetic.main.activity_tractor_maps.*
+import kotlinx.android.synthetic.main.content_tractor_list.*
 import kotlinx.android.synthetic.main.tractor_list.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
@@ -30,10 +33,26 @@ class TractorList : AppCompatActivity(), TractorListener {
         setContentView(R.layout.tractor_list)
         app = application as MainApp
 
-
         toolbar.title = title
         setSupportActionBar(toolbar)
 
+        val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
+
+
+        navigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.list ->{
+                    startActivity<TractorList>()
+                }
+                R.id.home -> {
+                        startActivity<MainTractor>()
+                }
+                R.id.map ->{
+                        startActivity<TractorMapsActivity>()
+                }
+            }
+            return@setOnNavigationItemSelectedListener true
+        }
 
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
@@ -55,21 +74,14 @@ class TractorList : AppCompatActivity(), TractorListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
-
-
-            /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
             R.id.item_map -> startActivity<TractorMapsActivity>()
-
-
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onDeleteClick(item: MenuItem) {
         when (item.itemId) {
-            R.id.button_delete -> {
-            app.tractors.delete(tractor)
-            }
+            R.id.button_delete -> app.tractors.delete(tractor)
         }
     }
 
