@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.maps
+package org.wit.hogan_farm_machinery.activities.navActivities
 
 import android.os.Bundle
 import android.view.View
@@ -9,11 +9,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import kotlinx.android.synthetic.main.content_tractor_maps.*
+import kotlinx.android.synthetic.main.content_all_maps.*
 import org.jetbrains.anko.startActivity
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.list.ListActivity
-import org.wit.hogan_farm_machinery.activities.home.HomeActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp

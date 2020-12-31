@@ -13,7 +13,6 @@ import org.jetbrains.anko.info
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.maps.AddMapsActivity
 import org.wit.hogan_farm_machinery.helpers.readImage
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.helpers.showImagePicker
@@ -25,11 +24,10 @@ import org.wit.hogan_farm_machinery.models.TractorModel
 
 class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
-    val LOCATION_REQUEST = 2
-    var location = Location(52.245696, -7.139102, 15f)
     private var tractor = TractorModel()
     private lateinit var app: MainApp
     private val imageRequest = 1
+    private val locationRequest = 2
     var edit = false
 
     // Creating PlaceAdvert View
@@ -109,7 +107,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
                 location.lng = tractor.lng
                 location.zoom = tractor.zoom
             }
-            startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location), LOCATION_REQUEST)
+            startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location), locationRequest)
         }
     }
 
@@ -147,7 +145,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
     // determines which buttons are displayed in toolbar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu_tractor, menu)
+        menuInflater.inflate(R.menu.menu_create_advert, menu)
 
         // sets delete button for edit view
         if (edit && menu != null) menu.getItem(0).isVisible = true
@@ -179,7 +177,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
                     tractorImage.setImageBitmap(readImage(this, resultCode, data))
                 }
             }
-            LOCATION_REQUEST -> {
+            locationRequest -> {
                 if (data != null) {
                     val location = data.extras?.getParcelable<Location>("location")
                     if (location != null) {

@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.maps
+package org.wit.hogan_farm_machinery.activities.create_advert
 
 import android.app.Activity
 import android.content.Intent
@@ -26,7 +26,7 @@ class AddMapsActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMa
         super.onCreate(savedInstanceState)
         binding = ActivityCreateMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        
         location = intent.extras?.getParcelable("location")!!
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
