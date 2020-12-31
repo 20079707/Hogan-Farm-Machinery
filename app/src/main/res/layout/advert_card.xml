@@ -34,7 +34,7 @@
             android:layout_toEndOf="@+id/imageIcon"
             android:layout_below="@id/tractorMake" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/button_delete"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

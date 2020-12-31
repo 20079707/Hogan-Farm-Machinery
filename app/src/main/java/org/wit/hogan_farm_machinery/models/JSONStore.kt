@@ -36,13 +36,14 @@ class JSONStore(val context: Context) : TractorStore, AnkoLogger {
         return tractors
     }
 
+    // saves values
     override fun create(tractor: TractorModel) {
         tractor.id = generateRandomId()
         tractors.add(tractor)
         serialize()
     }
 
-
+    // finds value saved and replaces it with updated values
     override fun update(tractor: TractorModel) {
         val tractorsList = findAll() as ArrayList<TractorModel>
         val foundTractor: TractorModel? = tractors.find { p -> p.id == tractor.id }
@@ -61,6 +62,7 @@ class JSONStore(val context: Context) : TractorStore, AnkoLogger {
         serialize()
     }
 
+    // deletes values from db
     override fun delete(tractor: TractorModel) {
         tractors.remove(tractor)
         serialize()

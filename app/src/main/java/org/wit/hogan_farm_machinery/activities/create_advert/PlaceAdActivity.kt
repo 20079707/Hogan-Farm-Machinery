@@ -30,20 +30,23 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
     private var tractor = TractorModel()
     private lateinit var app: MainApp
     private val imageRequest = 1
-    var edit = true
+    var edit = false
 
+    // Creating PlaceAdvert View
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Linking Layout
         setContentView(R.layout.activity_create_advert)
         toolbarAdd.title = title
+        //Setting the Toolbar
         setSupportActionBar(toolbarAdd)
         info("Tractor Activity started..")
 
 
         app = application as MainApp
-        var edit = false
+        edit = false
 
-
+        //spinner Function
         val data = resources.getStringArray(R.array.category_array)
         val adapter = ArrayAdapter(this, R.layout.spinner_item_selected, data)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
@@ -62,6 +65,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             }
         }
 
+        // setting edit values for tractor
         if (intent.hasExtra("tractor_edit")) {
             edit = true
             tractor = intent.extras?.getParcelable("tractor_edit")!!
@@ -73,7 +77,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             chooseImage.setText(R.string.button_updateImage)
         }
         
-
+        // button which saves the values in the fields
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
             tractor.price = tractorPrice.text.toString()
@@ -92,9 +96,12 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             finish()
         }
 
+        // adding the choose image functionality to the select image button
         chooseImage.setOnClickListener {
             showImagePicker(this, imageRequest)
         }
+
+        // adding the add location functionality to the select set location button
         selectLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (tractor.zoom != 0f) {
@@ -107,7 +114,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
     }
 
 
-
+    // radio button function
     fun onRadioButtonClicked(view: View) {
 
         if (view is RadioButton) {
@@ -138,12 +145,16 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
     }
 
+    // determines which buttons are displayed in toolbar
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_tractor, menu)
+
+        // sets delete button for edit view
         if (edit && menu != null) menu.getItem(0).isVisible = true
         return super.onCreateOptionsMenu(menu)
     }
 
+    // gives toolbar functions
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_delete -> {
@@ -157,6 +168,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         return super.onOptionsItemSelected(item)
     }
 
+    // needed to save the image and location
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)

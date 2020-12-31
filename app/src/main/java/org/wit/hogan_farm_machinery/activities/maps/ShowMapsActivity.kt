@@ -25,6 +25,8 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     lateinit var map: GoogleMap
     lateinit var app: MainApp
 
+
+    // lists all locations of tractors created
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityAllMapsBinding.inflate(layoutInflater)

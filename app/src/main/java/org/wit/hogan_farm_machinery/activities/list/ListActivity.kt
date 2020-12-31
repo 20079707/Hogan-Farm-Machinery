@@ -17,21 +17,25 @@ import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
 import org.wit.hogan_farm_machinery.activities.home.HomeActivity
 import org.wit.hogan_farm_machinery.activities.maps.ShowMapsActivity
+import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
+import org.wit.hogan_farm_machinery.databinding.ActivityHomeBinding
+import org.wit.hogan_farm_machinery.databinding.ActivityListBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
 class ListActivity : AppCompatActivity(), TractorListener {
 
+    private lateinit var binding: ActivityListBinding
     lateinit var app: MainApp
     var tractor = TractorModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_list)
+        binding = ActivityListBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         app = application as MainApp
-
-        toolbar.title = title
-        setSupportActionBar(toolbar)
+        
+        setSupportActionBar(binding.toolbar)
 
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
         navigationView.setOnNavigationItemSelectedListener { item ->

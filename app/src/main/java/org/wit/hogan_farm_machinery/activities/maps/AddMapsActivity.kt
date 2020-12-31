@@ -21,6 +21,7 @@ class AddMapsActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMa
     private lateinit var map: GoogleMap
     private var location = Location()
 
+    // creates map view and determines functionality
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCreateMapsBinding.inflate(layoutInflater)

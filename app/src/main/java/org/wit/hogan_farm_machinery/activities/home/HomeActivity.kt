@@ -16,22 +16,27 @@ import org.wit.hogan_farm_machinery.activities.adapter.TractorDisplayAdapter
 import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
 import org.wit.hogan_farm_machinery.activities.list.ListActivity
 import org.wit.hogan_farm_machinery.activities.maps.ShowMapsActivity
+import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
+import org.wit.hogan_farm_machinery.databinding.ActivityHomeBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 
 class HomeActivity : AppCompatActivity(), TractorListener {
 
+    private lateinit var binding: ActivityHomeBinding
     lateinit var app: MainApp
     var tractor = TractorModel()
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         app = application as MainApp
+        setSupportActionBar(binding.toolbar)
 
-        toolbar.title = title
-        setSupportActionBar(toolbar)
 
+        // determines the functionality of nav bar at the bottom of the screen
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
@@ -48,6 +53,7 @@ class HomeActivity : AppCompatActivity(), TractorListener {
             return@setOnNavigationItemSelectedListener true
         }
 
+        // displays all cards created by user on screen
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = TractorDisplayAdapter(app.tractors.findAll(), this)
@@ -60,6 +66,7 @@ class HomeActivity : AppCompatActivity(), TractorListener {
         return super.onCreateOptionsMenu(menu)
     }
 
+    // determines functionality when a card is selected
     override fun onTractorClick(tractor: TractorModel) {
         startActivityForResult(intentFor<PlaceAdActivity>().putExtra("tractor_edit", tractor), 0)
     }
