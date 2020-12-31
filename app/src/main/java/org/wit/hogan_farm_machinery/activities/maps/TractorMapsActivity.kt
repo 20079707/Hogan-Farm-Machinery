@@ -1,13 +1,19 @@
 package org.wit.hogan_farm_machinery.activities.maps
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.content_tractor_maps.*
+import org.jetbrains.anko.startActivity
+import org.wit.hogan_farm_machinery.R
+import org.wit.hogan_farm_machinery.activities.createAd.MainTractor
+import org.wit.hogan_farm_machinery.activities.list.TractorList
 import org.wit.hogan_farm_machinery.databinding.ActivityTractorMapsBinding
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp
@@ -30,6 +36,24 @@ class TractorMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener
         mapView.getMapAsync {
             map = it
             configureMap()
+        }
+
+        val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
+
+
+        navigationView.setOnNavigationItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.list ->{
+                    startActivity<TractorList>()
+                }
+                R.id.home -> {
+                    startActivity<MainTractor>()
+                }
+                R.id.map ->{
+                    startActivity<TractorMapsActivity>()
+                }
+            }
+            return@setOnNavigationItemSelectedListener true
         }
 
 

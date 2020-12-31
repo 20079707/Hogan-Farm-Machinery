@@ -34,16 +34,16 @@
             android:layout_toEndOf="@+id/imageIcon"
             android:layout_below="@id/tractorMake" />
 
-
-        <ImageView
+        <ImageButton
             android:id="@+id/button_delete"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="29dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginVertical="15dp"
-            android:src="@drawable/card_delete_icon" />
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/ic_baseline_delete_54"
+            android:background="@android:color/transparent" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

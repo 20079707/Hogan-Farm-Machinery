@@ -13,10 +13,12 @@
         android:id="@+id/cardView"
         android:layout_width="378dp"
         android:layout_height="146dp"
-        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" >
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="400dp"
+        android:layout_marginEnd="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -26,9 +28,9 @@
                 android:id="@+id/currentMake"
                 android:layout_width="135dp"
                 android:layout_height="25dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.35"
                 app:layout_constraintStart_toStartOf="parent"
@@ -38,10 +40,10 @@
                 android:id="@+id/currentPrice"
                 android:layout_width="135dp"
                 android:layout_height="25dp"
-                android:layout_marginBottom="8dp"
-                android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/imageView"
                 app:layout_constraintHorizontal_bias="0.35"
