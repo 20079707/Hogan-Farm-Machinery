@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">Hogan Farm Machinery</string>
-    <string name="listTractors">Edit Adverts</string>
+    <string name="listTractors">Machinery Catalogue</string>
     <string name="addTractor">Create Advert</string>
     <string name="adDetails">Enter Advert Details</string>
+    <string name="welcome">Welcome to Hogan\'s Farm Machinery Buy &amp; Sell</string>
+    <string name="toContinue">To continue, please place an advert by clicking the button below</string>
+    <string name="getStarted">Get Started</string>
 
     <string name="menu_addTractor">Add</string>
     <string name="menu_cancelTractor">Cancel</string>

@@ -1,6 +1,7 @@
 package org.wit.hogan_farm_machinery.activities.navActivities
 
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -53,6 +54,11 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
             }
             return@setOnNavigationItemSelectedListener true
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_main, menu)
+        return super.onCreateOptionsMenu(menu)
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {

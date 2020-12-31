@@ -26,7 +26,7 @@ class AddMapsActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMa
         super.onCreate(savedInstanceState)
         binding = ActivityCreateMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        
+
         location = intent.extras?.getParcelable("location")!!
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
