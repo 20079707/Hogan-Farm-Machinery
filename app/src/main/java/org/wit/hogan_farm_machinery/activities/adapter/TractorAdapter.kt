@@ -12,7 +12,6 @@ import org.wit.hogan_farm_machinery.models.TractorModel
 
 interface TractorListener {
     fun onTractorClick(tractor: TractorModel)
-    fun onDeleteClick(item: MenuItem)
 }
 
 class TractorAdapter constructor(private var tractors: List<TractorModel>, private val listener: TractorListener) : RecyclerView.Adapter<TractorAdapter.MainHolder>() {

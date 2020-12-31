@@ -39,8 +39,6 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         }
 
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
-
-
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list ->{
@@ -55,12 +53,6 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
             }
             return@setOnNavigationItemSelectedListener true
         }
-
-
-        /*binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }*/
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {

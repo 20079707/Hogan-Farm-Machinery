@@ -34,6 +34,6 @@
         android:background="@color/colourToolBar"
         app:itemIconTint="@color/white"
         app:itemTextColor="@color/white"
-        app:menu="@menu/menu_nav" />
+        app:menu="@menu/menu_main" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -4,14 +4,13 @@
 
     <item
         android:id="@+id/list"
-        android:title="@string/nav_list"
+        android:title="@string/nav_edit_advert"
         android:icon="@drawable/nav_list_icon" />
 
     <item
         android:id="@+id/home"
         android:title="@string/nav_home"
-        android:icon="@drawable/nav_home_icon"
-        app:showAsAction="always"/>
+        android:icon="@drawable/nav_home_icon" />
 
     <item
         android:id="@+id/map"

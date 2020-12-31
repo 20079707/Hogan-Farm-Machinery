@@ -33,8 +33,6 @@ class ListActivity : AppCompatActivity(), TractorListener {
         setSupportActionBar(toolbar)
 
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
-
-
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.list ->{
@@ -66,35 +64,20 @@ class ListActivity : AppCompatActivity(), TractorListener {
         return super.onCreateOptionsMenu(menu)
     }
 
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            /*R.id.item_add -> startActivityForResult<MainTractor>(0)*/
-            R.id.item_map -> startActivity<ShowMapsActivity>()
-        }
-        return super.onOptionsItemSelected(item)
-    }
-
-    override fun onDeleteClick(item: MenuItem) {
-        when (item.itemId) {
-            R.id.button_delete -> app.tractors.delete(tractor)
-        }
-    }
-
     override fun onTractorClick(tractor: TractorModel) {
         startActivityForResult(intentFor<PlaceAdActivity>().putExtra("tractor_edit", tractor), 0)
     }
-
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         loadTractors()
         super.onActivityResult(requestCode, resultCode, data)
     }
+
     private fun loadTractors() {
         showTractors(app.tractors.findAll())
     }
 
-    fun showTractors (tractors: List<TractorModel>) {
+    private fun showTractors (tractors: List<TractorModel>) {
         recyclerView.adapter = TractorAdapter(tractors, this)
         recyclerView.adapter?.notifyDataSetChanged()
     }
