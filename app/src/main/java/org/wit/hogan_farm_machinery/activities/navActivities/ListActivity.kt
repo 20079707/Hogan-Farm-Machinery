@@ -6,6 +6,9 @@ import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.content_activity_list.*
 import org.jetbrains.anko.intentFor
@@ -24,12 +27,15 @@ class ListActivity : AppCompatActivity(), TractorListener {
     private lateinit var binding: ActivityListBinding
     lateinit var app: MainApp
     var tractor = TractorModel()
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
         app = application as MainApp
+        firebaseAnalytics = Firebase.analytics
+
         
         setSupportActionBar(binding.toolbar)
 

@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.content_activity_home.*
 import kotlinx.android.synthetic.main.content_activity_list.*
@@ -20,7 +23,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHomeBinding
     lateinit var app: MainApp
     var tractor = TractorModel()
-
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +31,14 @@ class HomeActivity : AppCompatActivity() {
         setContentView(binding.root)
         app = application as MainApp
         setSupportActionBar(binding.toolbar)
+        firebaseAnalytics = Firebase.analytics
 
 
         getStarted.setOnClickListener{
             startActivity<PlaceAdActivity>()
         }
+
+
 
         // determines the functionality of nav bar at the bottom of the screen
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
@@ -56,5 +62,6 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
+
     }
 }

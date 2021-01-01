@@ -10,6 +10,9 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.content_all_maps.*
 import org.jetbrains.anko.startActivity
 import org.wit.hogan_farm_machinery.R
@@ -23,7 +26,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     private lateinit var binding: ActivityAllMapsBinding
     lateinit var map: GoogleMap
     lateinit var app: MainApp
-
+    private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     // lists all locations of tractors created
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +35,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         setContentView(binding.root)
         setSupportActionBar(binding.toolbarMaps)
         app = application as MainApp
+        firebaseAnalytics = Firebase.analytics
 
         mapView.onCreate(savedInstanceState)
         mapView.getMapAsync {
