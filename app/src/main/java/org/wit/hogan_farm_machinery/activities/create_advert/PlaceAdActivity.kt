@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_create_advert.*
 import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
@@ -70,7 +71,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             tractorMake.setText(tractor.make)
             tractorPrice.setText(tractor.price)
             tractorDescription.setText(tractor.description)
-            tractorImage.setImageBitmap(readImageFromPath(this, tractor.image))
+            Glide.with(this).load(tractor.image).into(tractorImage);
             btnAdd.setText(R.string.button_updateTractor)
             chooseImage.setText(R.string.button_updateImage)
         }
@@ -102,10 +103,10 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         // adding the add location functionality to the select set location button
         selectLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
-            if (tractor.zoom != 0f) {
-                location.lat =  tractor.lat
-                location.lng = tractor.lng
-                location.zoom = tractor.zoom
+            if (tractor.location.zoom != 0f) {
+                location.lat =  tractor.location.lat
+                location.lng = tractor.location.lng
+                location.zoom = tractor.location.zoom
             }
             startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location), locationRequest)
         }
@@ -181,13 +182,13 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
                 if (data != null) {
                     val location = data.extras?.getParcelable<Location>("location")
                     if (location != null) {
-                        tractor.lat = location.lat
+                        tractor.location.lat = location.lat
                     }
                     if (location != null) {
-                        tractor.lng = location.lng
+                        tractor.location.lng = location.lng
                     }
                     if (location != null) {
-                        tractor.zoom = location.zoom
+                        tractor.location.zoom = location.zoom
                     }
                 }
             }

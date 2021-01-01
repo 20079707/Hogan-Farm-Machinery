@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.advert_card.view.*
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
@@ -37,7 +38,7 @@ class TractorAdapter constructor(private var tractors: List<TractorModel>, priva
         fun bind(tractor: TractorModel, listener: TractorListener) {
             itemView.tractorMake.text = tractor.make
             itemView.tractorPrice.text = tractor.price
-            itemView.imageIcon.setImageBitmap(readImageFromPath(itemView.context, tractor.image))
+            Glide.with(itemView.context).load(tractor.image).into(itemView.imageIcon);
             itemView.setOnClickListener { listener.onTractorClick(tractor) }
         }
     }

@@ -1,10 +1,16 @@
 package org.wit.hogan_farm_machinery.models
 
 import android.os.Parcelable
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class TractorModel(var id: Long = 0,
+@Entity
+data class TractorModel(@PrimaryKey(autoGenerate = true)
+                        var fbId : String = "",
+                        var id: Long = 0,
                         var make: String = "",
                         var price:  String = "",
                         var image: String = "",
@@ -12,10 +18,7 @@ data class TractorModel(var id: Long = 0,
                         var radio1: Boolean = false,
                         var radio2: Boolean = false,
                         var category: Boolean = true,
-                        var lat : Double = 0.0,
-                        var lng: Double = 0.0,
-                        var zoom: Float = 0f
-) : Parcelable
+                        @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize
 data class Location(var lat: Double = 0.0,

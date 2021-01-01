@@ -35,6 +35,7 @@ class TractorMemStore : TractorStore, AnkoLogger {
             foundTractor.radio1 = tractor.radio1
             foundTractor.radio2 = tractor.radio2
             foundTractor.category = tractor.category
+            foundTractor.location = tractor.location
             logAll()
         }
     }

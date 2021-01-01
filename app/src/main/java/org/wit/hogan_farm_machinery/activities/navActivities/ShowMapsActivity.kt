@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.LatLng
@@ -19,6 +20,7 @@ import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp
+import org.wit.hogan_farm_machinery.models.TractorModel
 
 
 class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
@@ -66,11 +68,10 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {
-        val tag = marker.tag as Long
-        val tractor = app.tractors.findById(tag)
-        currentMake.text = tractor!!.make
+        val tractor = marker.tag as TractorModel
+        currentMake.text = tractor.make
         currentPrice.text = tractor.price
-        imageView.setImageBitmap(readImageFromPath(this@ShowMapsActivity, tractor.image))
+        Glide.with(this).load(tractor.image).into(imageView);
         return true
 
     }
@@ -78,10 +79,10 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     private fun configureMap() {
         map.uiSettings.isZoomControlsEnabled = true
         app.tractors.findAll().forEach {
-            val loc = LatLng(it.lat, it.lng)
+            val loc = LatLng(it.location.lat, it.location.lng)
             val options = MarkerOptions().title(it.make).position(loc)
-            map.addMarker(options).tag = it.id
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.zoom))
+            map.addMarker(options).tag = it
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(loc, it.location.zoom))
             map.setOnMarkerClickListener(this)
         }
     }
