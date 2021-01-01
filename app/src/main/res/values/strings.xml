@@ -16,7 +16,7 @@
     <string name="button_updateImage">Change Image</string>
     <string name="button_location">Set Location</string>
     <string name="menu_deleteTractor">Delete</string>
-
+    <string name="menu_logout">Logout</string>
 
     <string name="hint_tractorMake">Make &amp; Model</string>
     <string name="hint_tractorPrice">Price</string>
@@ -32,6 +32,7 @@
     <string name="nav_edit_advert">Add/Edit</string>
     <string name="nav_home">Home</string>
     <string name="nav_map">Maps</string>
+
 
     <string name="card_delete">Delete</string>
 
@@ -54,4 +55,8 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="log_in">Log In</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
 </resources>

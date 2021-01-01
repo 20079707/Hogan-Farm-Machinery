@@ -21,6 +21,7 @@ import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
 import org.wit.hogan_farm_machinery.databinding.ActivityListBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
+import org.wit.hogan_farm_machinery.views.LoginView
 
 class ListActivity : AppCompatActivity(), TractorListener {
 
@@ -51,6 +52,9 @@ class ListActivity : AppCompatActivity(), TractorListener {
                 R.id.map ->{
                         startActivity<ShowMapsActivity>()
                 }
+                R.id.item_logout ->{
+                    startActivity<LoginView>()
+                }
             }
             return@setOnNavigationItemSelectedListener true
         }
@@ -70,6 +74,15 @@ class ListActivity : AppCompatActivity(), TractorListener {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_logout ->{
+                startActivity<LoginView>()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 
     override fun onTractorClick(tractor: TractorModel) {
         startActivityForResult(intentFor<PlaceAdActivity>().putExtra("tractor_edit", tractor), 0)

@@ -17,6 +17,7 @@ import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityHomeBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
+import org.wit.hogan_farm_machinery.views.LoginView
 
 class HomeActivity : AppCompatActivity() {
 
@@ -52,6 +53,9 @@ class HomeActivity : AppCompatActivity() {
                 }
                 R.id.map ->{
                         startActivity<ShowMapsActivity>()
+                }
+                R.id.item_logout ->{
+                    startActivity<LoginView>()
                 }
             }
             return@setOnNavigationItemSelectedListener true

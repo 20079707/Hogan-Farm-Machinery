@@ -21,6 +21,7 @@ import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
 import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
+import org.wit.hogan_farm_machinery.views.LoginView
 
 
 class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
@@ -56,6 +57,9 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
                 }
                 R.id.map ->{
                     startActivity<ShowMapsActivity>()
+                }
+                R.id.item_logout ->{
+                    startActivity<LoginView>()
                 }
             }
             return@setOnNavigationItemSelectedListener true

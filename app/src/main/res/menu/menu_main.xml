@@ -5,7 +5,8 @@
     <item
         android:id="@+id/list"
         android:title="@string/nav_edit_advert"
-        android:icon="@drawable/nav_list_icon" />
+        android:icon="@drawable/nav_list_icon"
+        app:showAsAction="never"/>
 
     <item
         android:id="@+id/home"
@@ -16,5 +17,10 @@
         android:id="@+id/map"
         android:title="@string/nav_map"
         android:icon="@drawable/nav_map_icon" />
+
+    <item
+        android:id="@+id/item_logout"
+        android:title="@string/menu_logout"
+        android:icon="@drawable/exit" />
 
 </menu>

@@ -45,6 +45,14 @@
             android:name=".activities.navActivities.HomeActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.navActivities.HomeActivity" />
+        </activity>
+        <activity
+            android:name=".views.LoginView"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
