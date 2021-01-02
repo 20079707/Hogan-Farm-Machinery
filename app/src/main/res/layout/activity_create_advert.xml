@@ -145,69 +145,61 @@
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/make"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp">
+                    android:layout_margin="10dp">
 
                     <EditText
                         android:id="@+id/tractorMake"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/grey"
                         android:hint="@string/hint_tractorMake"
                         android:inputType="text"
                         android:maxLength="25"
                         android:maxLines="1"
                         android:textColor="@color/black"
-                        android:textSize="14sp"
-                        tools:ignore="Autofill">
-
-                    </EditText>
+                        android:textSize="14sp" />
                 </com.google.android.material.textfield.TextInputLayout>
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/price"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp">
+                    android:layout_margin="10dp">
 
                     <EditText
                         android:id="@+id/tractorPrice"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/grey"
                         android:hint="@string/hint_tractorPrice"
                         android:inputType="text"
                         android:maxLength="25"
                         android:maxLines="1"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        tools:ignore="Autofill">
-
-                    </EditText>
+                        tools:ignore="Autofill"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/description"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="8dp">
+                    android:layout_margin="10dp">
 
                     <EditText
                         android:id="@+id/tractorDescription"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/grey"
+                        android:layout_height="150dp"
+                        android:gravity="top"
                         android:hint="@string/hint_tractorDescription"
-                        android:inputType="text"
+                        android:inputType="text|textMultiLine"
                         android:maxLength="200"
-                        android:maxLines="7"
                         android:textColor="@color/black"
                         android:textSize="14sp"
-                        tools:ignore="Autofill">
-
-                    </EditText>
+                        tools:ignore="Autofill"/>
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <ImageView
