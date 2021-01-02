@@ -8,8 +8,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_login.*
 import org.jetbrains.anko.startActivity
-import org.wit.hogan_farm_machinery.activities.navActivities.HomeActivity
-import org.wit.hogan_farm_machinery.activities.navActivities.ListActivity
+import org.wit.hogan_farm_machinery.activities.HomeActivity
+import org.wit.hogan_farm_machinery.activities.ListActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityLoginBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 
@@ -54,7 +54,7 @@ class LogInActivity : AppCompatActivity() {
                 task ->
                 if (task.isSuccessful) {
 
-                    val intent = Intent(this@LogInActivity, ListActivity::class.java)
+                    val intent = Intent(this@LogInActivity, HomeActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                     startActivity(intent)
                     finish()

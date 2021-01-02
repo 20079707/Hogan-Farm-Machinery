@@ -1,5 +1,6 @@
-package org.wit.hogan_farm_machinery.activities.navActivities
+package org.wit.hogan_farm_machinery.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -14,6 +15,7 @@ import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.content_all_maps.*
 import org.jetbrains.anko.startActivity
@@ -22,6 +24,7 @@ import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 import org.wit.hogan_farm_machinery.activities.authentication.LogInActivity
+import org.wit.hogan_farm_machinery.activities.authentication.WelcomeActivity
 
 
 class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
@@ -74,10 +77,15 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_logout ->{
-                startActivity<LogInActivity>()
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this@ShowMapsActivity, WelcomeActivity::class.java)
+                startActivity(intent)
+                finish()
+
+                return true
             }
         }
-        return super.onOptionsItemSelected(item)
+        return false
     }
 
     override fun onMarkerClick(marker: Marker): Boolean {

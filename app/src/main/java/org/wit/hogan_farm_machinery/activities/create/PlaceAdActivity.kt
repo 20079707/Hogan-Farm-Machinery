@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.create_advert
+package org.wit.hogan_farm_machinery.activities.create
 
 import android.content.Intent
 import android.os.Build
@@ -15,7 +15,6 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.helpers.readImage
-import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.helpers.showImagePicker
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.Location

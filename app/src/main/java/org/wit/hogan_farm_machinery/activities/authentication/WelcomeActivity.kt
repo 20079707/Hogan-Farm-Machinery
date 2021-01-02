@@ -7,18 +7,23 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_welcome.*
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.navActivities.ListActivity
+import org.wit.hogan_farm_machinery.activities.ListActivity
 import org.wit.hogan_farm_machinery.main.MainApp
 import kotlinx.android.synthetic.main.activity_welcome.btnWelcomeRegister
+import org.wit.hogan_farm_machinery.activities.HomeActivity
+import org.wit.hogan_farm_machinery.databinding.ActivityRegisterBinding
+import org.wit.hogan_farm_machinery.databinding.ActivityWelcomeBinding
 
 class WelcomeActivity : AppCompatActivity(){
 
     var firebaseUser: FirebaseUser? = null
     lateinit var app: MainApp
+    private lateinit var binding: ActivityWelcomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        binding = ActivityWelcomeBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         app = application as MainApp
 
         btnWelcomeRegister.setOnClickListener {
@@ -41,7 +46,7 @@ class WelcomeActivity : AppCompatActivity(){
         firebaseUser = FirebaseAuth.getInstance().currentUser
 
         if (firebaseUser != null) {
-            val intent = Intent(this@WelcomeActivity, ListActivity::class.java)
+            val intent = Intent(this@WelcomeActivity, HomeActivity::class.java)
             startActivity(intent)
             finish()
         }

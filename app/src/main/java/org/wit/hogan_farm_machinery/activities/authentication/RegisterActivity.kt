@@ -9,7 +9,8 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
-import org.wit.hogan_farm_machinery.activities.navActivities.ListActivity
+import org.wit.hogan_farm_machinery.activities.HomeActivity
+import org.wit.hogan_farm_machinery.activities.ListActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityRegisterBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 
@@ -73,7 +74,7 @@ class RegisterActivity : AppCompatActivity() {
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful){
-                                val intent = Intent(this@RegisterActivity, ListActivity::class.java)
+                                val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)
                                 finish()

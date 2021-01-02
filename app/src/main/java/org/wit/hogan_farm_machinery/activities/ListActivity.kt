@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.navActivities
+package org.wit.hogan_farm_machinery.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -17,7 +17,7 @@ import org.jetbrains.anko.startActivity
 import org.jetbrains.anko.startActivityForResult
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.activities.adapter.TractorAdapter
-import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
+import org.wit.hogan_farm_machinery.activities.create.PlaceAdActivity
 import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
 import org.wit.hogan_farm_machinery.databinding.ActivityListBinding
 import org.wit.hogan_farm_machinery.main.MainApp

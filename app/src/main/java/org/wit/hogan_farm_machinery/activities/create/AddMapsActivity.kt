@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.create_advert
+package org.wit.hogan_farm_machinery.activities.create
 
 import android.app.Activity
 import android.content.Intent
