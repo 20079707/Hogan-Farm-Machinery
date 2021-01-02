@@ -68,4 +68,12 @@ class HomeActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
 
     }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_logout ->{
+                startActivity<LoginView>()
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }
