@@ -49,8 +49,21 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.navActivities.HomeActivity" />
         </activity>
+
         <activity
-            android:name=".views.LoginView"
+            android:name="org.wit.hogan_farm_machinery.activities.authentication.RegisterActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="org.wit.hogan_farm_machinery.activities.authentication.LogInActivity"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
+        </activity>
+
+        <activity
+            android:name="org.wit.hogan_farm_machinery.activities.authentication.WelcomeActivity"
             android:label="@string/app_name"
             android:theme="@style/Theme.HoganFarmMachinery.NoActionBar">
             <intent-filter>

@@ -10,14 +10,13 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.content_activity_home.*
 import kotlinx.android.synthetic.main.content_activity_list.*
-import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.startActivity
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.activities.create_advert.PlaceAdActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityHomeBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
-import org.wit.hogan_farm_machinery.views.LoginView
+import org.wit.hogan_farm_machinery.activities.authentication.LogInActivity
 
 class HomeActivity : AppCompatActivity() {
 
@@ -55,7 +54,7 @@ class HomeActivity : AppCompatActivity() {
                         startActivity<ShowMapsActivity>()
                 }
                 R.id.item_logout ->{
-                    startActivity<LoginView>()
+                    startActivity<LogInActivity>()
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -71,7 +70,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_logout ->{
-                startActivity<LoginView>()
+                startActivity<LogInActivity>()
             }
         }
         return super.onOptionsItemSelected(item)

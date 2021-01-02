@@ -19,10 +19,9 @@ import kotlinx.android.synthetic.main.content_all_maps.*
 import org.jetbrains.anko.startActivity
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.databinding.ActivityAllMapsBinding
-import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
-import org.wit.hogan_farm_machinery.views.LoginView
+import org.wit.hogan_farm_machinery.activities.authentication.LogInActivity
 
 
 class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
@@ -60,7 +59,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
                     startActivity<ShowMapsActivity>()
                 }
                 R.id.item_logout ->{
-                    startActivity<LoginView>()
+                    startActivity<LogInActivity>()
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -75,7 +74,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_logout ->{
-                startActivity<LoginView>()
+                startActivity<LogInActivity>()
             }
         }
         return super.onOptionsItemSelected(item)

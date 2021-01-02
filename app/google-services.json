@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "780560471004",
-    "project_id": "hogan-farm-machinery",
-    "storage_bucket": "hogan-farm-machinery.appspot.com"
+    "project_number": "194080487801",
+    "firebase_url": "https://hogan-farm-machinery-14f34-default-rtdb.firebaseio.com",
+    "project_id": "hogan-farm-machinery-14f34",
+    "storage_bucket": "hogan-farm-machinery-14f34.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:780560471004:android:0cddd95d2e98042ff47519",
+        "mobilesdk_app_id": "1:194080487801:android:7dc0a89c880b5e364657a8",
         "android_client_info": {
           "package_name": "org.wit.hogan_farm_machinery"
         }
       },
       "oauth_client": [
         {
-          "client_id": "780560471004-8svb4gcc6upkjtvi79ive9gdjdfdupb5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "org.wit.hogan_farm_machinery",
-            "certificate_hash": "15cbcbc81901b7a7a2565377c7a26d4920b00033"
-          }
-        },
-        {
-          "client_id": "780560471004-mlpo8q35t1v3r9q39odsfor71e7907j6.apps.googleusercontent.com",
+          "client_id": "194080487801-a0n71g7rj6q9od2s9vngouobsr782mdf.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBHdDBHkOsVAXxhhnmq5bkiETYvfo7L4aU"
+          "current_key": "AIzaSyDB1jH8zLhVzIJywglHic2s7CV3UtoHSFM"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "780560471004-mlpo8q35t1v3r9q39odsfor71e7907j6.apps.googleusercontent.com",
+              "client_id": "194080487801-a0n71g7rj6q9od2s9vngouobsr782mdf.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

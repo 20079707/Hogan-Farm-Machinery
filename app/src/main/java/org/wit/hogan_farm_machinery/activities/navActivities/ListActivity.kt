@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_list.*
 import kotlinx.android.synthetic.main.content_activity_list.*
@@ -21,7 +22,8 @@ import org.wit.hogan_farm_machinery.activities.adapter.TractorListener
 import org.wit.hogan_farm_machinery.databinding.ActivityListBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
-import org.wit.hogan_farm_machinery.views.LoginView
+import org.wit.hogan_farm_machinery.activities.authentication.LogInActivity
+import org.wit.hogan_farm_machinery.activities.authentication.WelcomeActivity
 
 class ListActivity : AppCompatActivity(), TractorListener {
 
@@ -53,7 +55,7 @@ class ListActivity : AppCompatActivity(), TractorListener {
                         startActivity<ShowMapsActivity>()
                 }
                 R.id.item_logout ->{
-                    startActivity<LoginView>()
+                    startActivity<LogInActivity>()
                 }
             }
             return@setOnNavigationItemSelectedListener true
@@ -74,13 +76,19 @@ class ListActivity : AppCompatActivity(), TractorListener {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.item_logout ->{
-                startActivity<LoginView>()
+                FirebaseAuth.getInstance().signOut()
+                val intent = Intent(this@ListActivity, WelcomeActivity::class.java)
+                startActivity(intent)
+                finish()
+
+                return true
             }
         }
-        return super.onOptionsItemSelected(item)
+        return false
     }
 
 
