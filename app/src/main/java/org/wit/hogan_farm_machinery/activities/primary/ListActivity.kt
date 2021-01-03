@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.analytics.FirebaseAnalytics
@@ -24,12 +25,16 @@ import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.TractorModel
 import org.wit.hogan_farm_machinery.activities.authentication.LogInActivity
 import org.wit.hogan_farm_machinery.activities.authentication.WelcomeActivity
+import java.util.*
+import kotlin.collections.ArrayList
 
 class ListActivity : AppCompatActivity(), TractorListener {
 
     private lateinit var binding: ActivityListBinding
     lateinit var app: MainApp
     var tractor = TractorModel()
+    val arrayList = ArrayList<TractorModel>()
+    private val displayList = ArrayList<TractorModel>()
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,6 +66,8 @@ class ListActivity : AppCompatActivity(), TractorListener {
             return@setOnNavigationItemSelectedListener true
         }
 
+        displayList.addAll(arrayList)
+
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = TractorAdapter(app.tractors.findAll(), this)
@@ -75,6 +82,40 @@ class ListActivity : AppCompatActivity(), TractorListener {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
+        val menuItem = menu!!.findItem(R.id.search)
+
+        if (menuItem != null){
+
+            val searchView = menuItem.actionView as SearchView
+
+            searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    return true                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+
+                    if (newText!!.isEmpty()) {
+
+                        displayList.clear()
+                        val search = newText.toLowerCase(Locale.getDefault())
+                        arrayList.forEach {
+
+                            if (it.make.toLowerCase(Locale.getDefault()).contains(search)) {
+                                displayList.add(it)
+                            }
+                        }
+                    }
+                    else {
+                        displayList.clear()
+                        displayList.addAll(arrayList)
+                        recyclerView.adapter!!.notifyDataSetChanged()
+                    }
+
+                    return true
+                }
+
+            })
+        }
         return super.onCreateOptionsMenu(menu)
     }
 

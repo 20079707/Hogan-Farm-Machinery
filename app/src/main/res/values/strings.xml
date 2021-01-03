@@ -62,5 +62,6 @@
     <!-- Other strings -->
     <string name="image_picker">Select Image</string>
     <string name="prompt_tractorMake">Please Enter a Make &amp; Model</string>
+    <string name="menu_search">Search</string>
 
 </resources>

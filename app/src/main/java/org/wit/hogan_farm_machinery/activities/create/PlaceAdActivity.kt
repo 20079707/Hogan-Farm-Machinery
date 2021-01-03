@@ -78,8 +78,10 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             tractorMake.setText(tractor.make)
             tractorPrice.setText(tractor.price)
             tractorYear.setText(tractor.year)
+            radio_for_sale.isChecked
+            radio_wanted.isChecked
             tractorDescription.setText(tractor.description)
-            Glide.with(this).load(tractor.image).into(tractorImage);
+            Glide.with(this).load(tractor.image).into(tractorImage)
             btnAdd.setText(R.string.button_updateTractor)
             chooseImage.setText(R.string.button_updateImage)
         }
@@ -89,6 +91,8 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             tractor.make = tractorMake.text.toString()
             tractor.price = tractorPrice.text.toString()
             tractor.year = tractorYear.text.toString()
+            tractor.radio1 = radio_for_sale.isChecked
+            tractor.radio2 = radio_wanted.isChecked
             tractor.description = tractorDescription.text.toString()
             if (tractor.make.isEmpty()) {
                 toast(R.string.prompt_tractorMake)
