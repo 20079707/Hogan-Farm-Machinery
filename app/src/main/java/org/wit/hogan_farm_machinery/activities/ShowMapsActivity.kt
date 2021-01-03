@@ -78,6 +78,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         when (item.itemId) {
             R.id.item_logout ->{
                 FirebaseAuth.getInstance().signOut()
+                app.tractors.clear()
                 val intent = Intent(this@ShowMapsActivity, WelcomeActivity::class.java)
                 startActivity(intent)
                 finish()

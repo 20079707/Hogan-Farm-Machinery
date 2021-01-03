@@ -81,6 +81,7 @@ class ListActivity : AppCompatActivity(), TractorListener {
         when (item.itemId) {
             R.id.item_logout ->{
                 FirebaseAuth.getInstance().signOut()
+                app.tractors.clear()
                 val intent = Intent(this@ListActivity, WelcomeActivity::class.java)
                 startActivity(intent)
                 finish()

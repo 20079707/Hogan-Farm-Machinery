@@ -9,7 +9,7 @@ internal fun getId(): Long {
     return lastId++
 }
 
-class TractorMemStore : TractorStore, AnkoLogger {
+class MemStore : TractorStore, AnkoLogger {
 
     private val tractors = ArrayList<TractorModel>()
     override fun findById(id: Long): TractorModel? {
@@ -18,6 +18,10 @@ class TractorMemStore : TractorStore, AnkoLogger {
 
     override fun findAll(): List<TractorModel> {
         return tractors
+    }
+
+    override fun clear() {
+        tractors.clear()
     }
 
     override fun create(tractor: TractorModel) {

@@ -6,5 +6,7 @@ interface TractorStore {
     fun create(tractor: TractorModel)
     fun update(tractor: TractorModel)
     fun delete(tractor: TractorModel)
+    fun clear()
+
 
 }

@@ -74,6 +74,7 @@ class HomeActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.item_logout ->{
                 FirebaseAuth.getInstance().signOut()
+                app.tractors.clear()
                 val intent = Intent(this@HomeActivity, WelcomeActivity::class.java)
                 startActivity(intent)
                 finish()

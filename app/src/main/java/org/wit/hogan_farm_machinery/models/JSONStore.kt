@@ -67,6 +67,10 @@ class JSONStore(val context: Context) : TractorStore, AnkoLogger {
         serialize()
     }
 
+    override fun clear() {
+        tractors.clear()
+    }
+
     private fun serialize() {
         val jsonString = gsonBuilder.toJson(tractors, listType)
         write(context, JSON_FILE, jsonString)

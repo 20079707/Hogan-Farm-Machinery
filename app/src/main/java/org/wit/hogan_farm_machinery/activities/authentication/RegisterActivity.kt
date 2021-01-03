@@ -2,6 +2,8 @@ package org.wit.hogan_farm_machinery.activities.authentication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
@@ -9,17 +11,19 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
+import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.activities.HomeActivity
 import org.wit.hogan_farm_machinery.activities.ListActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityRegisterBinding
 import org.wit.hogan_farm_machinery.main.MainApp
+import org.wit.hogan_farm_machinery.models.FireStore
 
 
 class RegisterActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
-    private var firebaseUserID: String =""
+    private var firebaseUserID: String = ""
 
 
     private lateinit var binding: ActivityRegisterBinding
@@ -32,11 +36,29 @@ class RegisterActivity : AppCompatActivity() {
         app = application as MainApp
         setSupportActionBar(binding.toolbarRegister)
 
-
         mAuth = FirebaseAuth.getInstance()
         btnRegister.setOnClickListener {
             registerUser()
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_exit, menu)
+        return super.onCreateOptionsMenu(menu)
+
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.exit -> {
+                val intent = Intent(this@RegisterActivity, WelcomeActivity::class.java)
+                startActivity(intent)
+                finish()
+
+                return true
+            }
+        }
+        return false
     }
 
     private fun registerUser() {
@@ -45,26 +67,30 @@ class RegisterActivity : AppCompatActivity() {
         val password: String = passwordRegister.text.toString()
 
         if (username == "") {
-            Toast.makeText(this@RegisterActivity, "Please enter your Username.", Toast.LENGTH_LONG).show()
-        }
-        else if  (email == "") {
-            Toast.makeText(this@RegisterActivity, "Please enter your email address.", Toast.LENGTH_LONG).show()
-        }
-        else if (password == "") {
-            Toast.makeText(this@RegisterActivity, "Please enter your password.", Toast.LENGTH_LONG).show()
-        }
-        else {
-            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-                task ->
+            Toast.makeText(this@RegisterActivity, "Please enter your Username.", Toast.LENGTH_LONG)
+                .show()
+        } else if (email == "") {
+            Toast.makeText(this@RegisterActivity,
+                "Please enter your email address.",
+                Toast.LENGTH_LONG).show()
+        } else if (password == "") {
+            Toast.makeText(this@RegisterActivity, "Please enter your password.", Toast.LENGTH_LONG)
+                .show()
+        } else {
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
+
                     firebaseUserID = mAuth.currentUser!!.uid
-                    refUsers = FirebaseDatabase.getInstance().reference.child("Users").child(firebaseUserID)
+                    refUsers = FirebaseDatabase.getInstance().reference.child("Users")
+                        .child(firebaseUserID)
 
                     val userHashMap = HashMap<String, Any>()
                     userHashMap["uid"] = firebaseUserID
                     userHashMap["username"] = username
-                    userHashMap["profile"] = "https://firebasestorage.googleapis.com/v0/b/hogan-farm-machinery-14f34.appspot.com/o/profile_image.png?alt=media&token=b9048498-aad9-4386-9f68-b0e5fda786ac"
-                    userHashMap["cover"] = "https://firebasestorage.googleapis.com/v0/b/hogan-farm-machinery-14f34.appspot.com/o/background_image.jpg?alt=media&token=80399352-0612-472c-99d8-79fb05df7322"
+                    userHashMap["profile"] =
+                        "https://firebasestorage.googleapis.com/v0/b/hogan-farm-machinery-14f34.appspot.com/o/profile_image.png?alt=media&token=b9048498-aad9-4386-9f68-b0e5fda786ac"
+                    userHashMap["cover"] =
+                        "https://firebasestorage.googleapis.com/v0/b/hogan-farm-machinery-14f34.appspot.com/o/background_image.jpg?alt=media&token=80399352-0612-472c-99d8-79fb05df7322"
                     userHashMap["status"] = "offline"
                     userHashMap["search"] = username.toLowerCase()
                     userHashMap["facebook"] = "https://m.facebook.com"
@@ -73,16 +99,20 @@ class RegisterActivity : AppCompatActivity() {
 
                     refUsers.updateChildren(userHashMap)
                         .addOnCompleteListener { task ->
-                            if (task.isSuccessful){
-                                val intent = Intent(this@RegisterActivity, HomeActivity::class.java)
+                            if (task.isSuccessful) {
+                                val intent =
+                                    Intent(this@RegisterActivity, HomeActivity::class.java)
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
                                 startActivity(intent)
                                 finish()
-                    }
-                    }
-                }
-                else{
-                    Toast.makeText(this@RegisterActivity, "Error Message: " + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+                            }
+                        }
+
+
+                } else {
+                    Toast.makeText(this@RegisterActivity,
+                        "Error Message: " + task.exception!!.message.toString(),
+                        Toast.LENGTH_LONG).show()
                 }
             }
         }

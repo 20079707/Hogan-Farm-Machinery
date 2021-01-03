@@ -2,24 +2,26 @@ package org.wit.hogan_farm_machinery.activities.authentication
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_login.*
-import org.jetbrains.anko.startActivity
+import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.activities.HomeActivity
-import org.wit.hogan_farm_machinery.activities.ListActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityLoginBinding
 import org.wit.hogan_farm_machinery.main.MainApp
+import org.wit.hogan_farm_machinery.models.FireStore
 
 
 class LogInActivity : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
-    private var firebaseUserID: String =""
-
+    private var firebaseUserID: String = ""
+    var fireStore: FireStore? = null
 
     private lateinit var binding: ActivityLoginBinding
     lateinit var app: MainApp
@@ -31,6 +33,8 @@ class LogInActivity : AppCompatActivity() {
         app = application as MainApp
         setSupportActionBar(binding.toolbarLogIn)
 
+        app.tractors is FireStore
+        fireStore = app.tractors as FireStore
 
         mAuth = FirebaseAuth.getInstance()
         btnLogin.setOnClickListener {
@@ -39,39 +43,52 @@ class LogInActivity : AppCompatActivity() {
 
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu_exit, menu)
+        return super.onCreateOptionsMenu(menu)
+
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.exit ->{
+                val intent = Intent(this@LogInActivity, WelcomeActivity::class.java)
+                startActivity(intent)
+                finish()
+
+                return true
+            }
+        }
+        return false
+    }
+
     private fun logInUser() {
-        val username: String = usernameLogIn.text.toString()
+        val email: String = emailLogIn.text.toString()
         val password: String = passwordLogIn.text.toString()
 
-        if (username == "") {
-            Toast.makeText(this@LogInActivity, "Please enter your Username.", Toast.LENGTH_LONG).show()
-        }
-        else if (password == "") {
-            Toast.makeText(this@LogInActivity, "Please enter your password.", Toast.LENGTH_LONG).show()
-        }
-        else {
-            mAuth.signInWithEmailAndPassword(username, password).addOnCompleteListener {
-                task ->
-                if (task.isSuccessful) {
-
-                    val intent = Intent(this@LogInActivity, HomeActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    startActivity(intent)
-                    finish()
-
-                }
-                else{
-                    Toast.makeText(this@LogInActivity, "Error Message: " + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+        when {
+            email == "" -> {
+                Toast.makeText(this@LogInActivity, "Please enter your Username.", Toast.LENGTH_LONG).show()
+            }
+            password == "" -> {
+                Toast.makeText(this@LogInActivity, "Please enter your password.", Toast.LENGTH_LONG).show()
+            }
+            else -> {
+                mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        if (fireStore != null) {
+                            fireStore!!.fetchTractors {
+                                val intent = Intent(this@LogInActivity, HomeActivity::class.java)
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                startActivity(intent)
+                                finish()
+                            }
+                        }
+                    }
+                    else{
+                        Toast.makeText(this@LogInActivity, "Error Message: " + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+                    }
                 }
             }
         }
-    }
-
-    private fun onLogin(email: String, password: String) {
-        startActivity<HomeActivity>()
-    }
-
-    private fun doSignUp(email: String, password: String) {
-        startActivity<HomeActivity>()
     }
 }
