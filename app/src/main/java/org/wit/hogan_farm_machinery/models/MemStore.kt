@@ -31,6 +31,7 @@ class TractorMemStore : TractorStore, AnkoLogger {
         if (foundTractor != null) {
             foundTractor.make = tractor.make
             foundTractor.price = tractor.price
+            foundTractor.year = tractor.year
             foundTractor.image = tractor.image
             foundTractor.radio1 = tractor.radio1
             foundTractor.radio2 = tractor.radio2

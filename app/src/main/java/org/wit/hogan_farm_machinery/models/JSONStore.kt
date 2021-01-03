@@ -50,6 +50,7 @@ class JSONStore(val context: Context) : TractorStore, AnkoLogger {
         if (foundTractor != null) {
             foundTractor.make = tractor.make
             foundTractor.price = tractor.price
+            foundTractor.year = tractor.year
             foundTractor.image = tractor.image
             foundTractor.description = tractor.description
             foundTractor.radio1 = tractor.radio1

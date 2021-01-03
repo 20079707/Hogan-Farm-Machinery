@@ -19,7 +19,7 @@ import org.wit.hogan_farm_machinery.helpers.showImagePicker
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.Location
 import org.wit.hogan_farm_machinery.models.TractorModel
-
+import java.text.NumberFormat
 
 
 class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
@@ -43,6 +43,10 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
         app = application as MainApp
         edit = false
+
+
+
+
 
         //spinner Function
         val data = resources.getStringArray(R.array.category_array)
@@ -69,6 +73,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             tractor = intent.extras?.getParcelable("tractor_edit")!!
             tractorMake.setText(tractor.make)
             tractorPrice.setText(tractor.price)
+            tractorYear.setText(tractor.year)
             tractorDescription.setText(tractor.description)
             Glide.with(this).load(tractor.image).into(tractorImage);
             btnAdd.setText(R.string.button_updateTractor)
@@ -79,6 +84,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
             tractor.price = tractorPrice.text.toString()
+            tractor.year = tractorYear.text.toString()
             tractor.description = tractorDescription.text.toString()
             if (tractor.make.isEmpty()) {
                 toast(R.string.enter_tractorMake)
@@ -110,7 +116,6 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location), locationRequest)
         }
     }
-
 
     // radio button function
     fun onRadioButtonClicked(view: View) {

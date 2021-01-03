@@ -13,6 +13,7 @@ data class TractorModel(@PrimaryKey(autoGenerate = true)
                         var id: Long = 0,
                         var make: String = "",
                         var price:  String = "",
+                        var year: String = "",
                         var image: String = "",
                         var description: String = "",
                         var radio1: Boolean = false,

@@ -61,4 +61,6 @@
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="loginWelcome">Welcome</string>
+    <string name="pick_date">Year</string>
+    <string name="hint_tractorYear">Year</string>
 </resources>
