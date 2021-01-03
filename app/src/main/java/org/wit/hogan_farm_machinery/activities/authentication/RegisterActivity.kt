@@ -12,11 +12,9 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_register.*
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.HomeActivity
-import org.wit.hogan_farm_machinery.activities.ListActivity
+import org.wit.hogan_farm_machinery.activities.primary.HomeActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityRegisterBinding
 import org.wit.hogan_farm_machinery.main.MainApp
-import org.wit.hogan_farm_machinery.models.FireStore
 
 
 class RegisterActivity : AppCompatActivity() {
@@ -66,6 +64,7 @@ class RegisterActivity : AppCompatActivity() {
         val email: String = emailRegister.text.toString()
         val password: String = passwordRegister.text.toString()
 
+        //if fields are empty display messages
         if (username == "") {
             Toast.makeText(this@RegisterActivity, "Please enter your Username.", Toast.LENGTH_LONG)
                 .show()
@@ -77,6 +76,7 @@ class RegisterActivity : AppCompatActivity() {
             Toast.makeText(this@RegisterActivity, "Please enter your password.", Toast.LENGTH_LONG)
                 .show()
         } else {
+            //when user inputs value save them to firebase
             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                 if (task.isSuccessful) {
 
@@ -84,6 +84,7 @@ class RegisterActivity : AppCompatActivity() {
                     refUsers = FirebaseDatabase.getInstance().reference.child("Users")
                         .child(firebaseUserID)
 
+                    //extras
                     val userHashMap = HashMap<String, Any>()
                     userHashMap["uid"] = firebaseUserID
                     userHashMap["username"] = username
@@ -92,8 +93,8 @@ class RegisterActivity : AppCompatActivity() {
                     userHashMap["cover"] =
                         "https://firebasestorage.googleapis.com/v0/b/hogan-farm-machinery-14f34.appspot.com/o/background_image.jpg?alt=media&token=80399352-0612-472c-99d8-79fb05df7322"
                     userHashMap["status"] = "offline"
-                    userHashMap["search"] = username.toLowerCase()
-                    userHashMap["facebook"] = "https://m.facebook.com"
+                    userHashMap["search"] = username.toLowerCase() //sets username as small letters
+                    userHashMap["facebook"] = "https://m.facebook.com" //
                     userHashMap["instagram"] = "https://m.instagram.com"
                     userHashMap["website"] = "https://www.google.com"
 
@@ -110,6 +111,7 @@ class RegisterActivity : AppCompatActivity() {
 
 
                 } else {
+                    //if there is an error with inputted values such as wrong format
                     Toast.makeText(this@RegisterActivity,
                         "Error Message: " + task.exception!!.message.toString(),
                         Toast.LENGTH_LONG).show()

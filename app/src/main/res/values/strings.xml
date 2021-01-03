@@ -1,41 +1,45 @@
 <resources>
     <string name="app_name">Hogan Farm Machinery</string>
-    <string name="listTractors">Machinery Catalogue</string>
-    <string name="addTractor">Create Advert</string>
-    <string name="adDetails">Enter Advert Details</string>
+    <string name="ad_details">Enter Advert Details</string>
     <string name="welcome">Welcome to Hogan\'s Farm Machinery Buy &amp; Sell</string>
     <string name="toContinue">To continue, please place an advert by clicking the button below</string>
     <string name="getStarted">Get Started</string>
 
-    <string name="menu_addTractor">Add</string>
-    <string name="menu_cancelTractor">Cancel</string>
+    <!-- View titles -->
+    <string name="title_activity_add">Create Advert</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_all_maps">Map Of All Locations</string>
+    <string name="title_activity_list">Machinery Catalogue</string>
 
+    <!-- Nav bar buttons -->
+    <string name="nav_edit_advert">Add/Edit</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_map">Maps</string>
+
+    <!-- App bar buttons -->
+    <string name="menu_add">Add</string>
+    <string name="menu_cancel">Cancel</string>
+    <string name="menu_delete">Delete</string>
+    <string name="menu_logout">Logout</string>
+
+    <!-- Buttons -->
     <string name="button_addTractor">Place Ad</string>
     <string name="button_updateTractor">Save Changes</string>
     <string name="button_addImage"> Add Image </string>
     <string name="button_updateImage">Change Image</string>
     <string name="button_location">Set Location</string>
-    <string name="menu_deleteTractor">Delete</string>
-    <string name="menu_logout">Logout</string>
 
+    <!-- Text field hints -->
     <string name="hint_tractorMake">Make &amp; Model</string>
     <string name="hint_tractorPrice">Price</string>
     <string name="hint_tractorDescription">Description</string>
-    <string name="enter_tractorMake">Please Enter a Make &amp; Model</string>
-    <string name="select_image">Select Image</string>
+    <string name="hint_tractorYear">Year</string>
 
+    <!-- Radio buttons -->
     <string name="for_sale">For Sale</string>
     <string name="wanted">Wanted</string>
 
-    <string name="label">Label</string>
-
-    <string name="nav_edit_advert">Add/Edit</string>
-    <string name="nav_home">Home</string>
-    <string name="nav_map">Maps</string>
-
-
-    <string name="card_delete">Delete</string>
-
+    <!-- Spinner list -->
     <string name="selected_item">Selected item:</string>
     <string-array name="category_array">
         <item>Tractors</item>
@@ -45,23 +49,18 @@
         <item>Silage Harvesters</item>
         <item>Front Loaders</item>
     </string-array>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_tractor_maps">Map Of All Locations</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Authentication strings -->
     <string name="log_in">Log In</string>
     <string name="sign_up">Sign Up</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="username">Username</string>
     <string name="loginWelcome">Welcome</string>
-    <string name="pick_date">Year</string>
-    <string name="hint_tractorYear">Year</string>
     <string name="register">Register</string>
+
+    <!-- Other strings -->
+    <string name="image_picker">Select Image</string>
+    <string name="prompt_tractorMake">Please Enter a Make &amp; Model</string>
+
 </resources>

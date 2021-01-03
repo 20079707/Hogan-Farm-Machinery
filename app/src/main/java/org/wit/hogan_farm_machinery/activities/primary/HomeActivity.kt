@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities
+package org.wit.hogan_farm_machinery.activities.primary
 
 import android.content.Intent
 import android.os.Bundle
@@ -37,26 +37,25 @@ class HomeActivity : AppCompatActivity() {
         firebaseAnalytics = Firebase.analytics
 
 
-        getStarted.setOnClickListener{
+        getStarted.setOnClickListener {
             startActivity<PlaceAdActivity>()
         }
-
 
 
         // determines the functionality of nav bar at the bottom of the screen
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.list ->{
+                R.id.list -> {
                     startActivity<ListActivity>()
                 }
                 R.id.home -> {
-                        startActivity<HomeActivity>()
+                    startActivity<HomeActivity>()
                 }
-                R.id.map ->{
-                        startActivity<ShowMapsActivity>()
+                R.id.map -> {
+                    startActivity<ShowMapsActivity>()
                 }
-                R.id.item_logout ->{
+                R.id.item_logout -> {
                     startActivity<LogInActivity>()
                 }
             }
@@ -65,14 +64,17 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    //inflates buttons on menu
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
 
     }
+
+    // menu button functionality
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_logout ->{
+            R.id.item_logout -> {
                 FirebaseAuth.getInstance().signOut()
                 app.tractors.clear()
                 val intent = Intent(this@HomeActivity, WelcomeActivity::class.java)

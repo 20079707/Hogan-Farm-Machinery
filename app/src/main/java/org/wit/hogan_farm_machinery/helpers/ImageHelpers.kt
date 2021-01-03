@@ -16,7 +16,7 @@ fun showImagePicker(parent: Activity, id: Int) {
     intent.type = "image/*"
     intent.action = Intent.ACTION_OPEN_DOCUMENT
     intent.addCategory(Intent.CATEGORY_OPENABLE)
-    val chooser = Intent.createChooser(intent, R.string.select_image.toString())
+    val chooser = Intent.createChooser(intent, R.string.image_picker.toString())
     parent.startActivityForResult(chooser, id)
 }
 
@@ -37,8 +37,8 @@ fun readImage(activity: Activity, resultCode: Int, data: Intent?): Bitmap? {
     return bitmap
 }
 
-fun readImageFromPath(context: Context, path : String) : Bitmap? {
-    var bitmap : Bitmap? = null
+fun readImageFromPath(context: Context, path: String): Bitmap? {
+    var bitmap: Bitmap? = null
     val uri = Uri.parse(path)
     if (uri != null) {
         try {

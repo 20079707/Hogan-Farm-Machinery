@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <color name="colourBackground">#F5F4F2</color>
     <color name="colourToolBar">#C6878F</color>
     <color name="colourStatusBar">#67697C</color>
     <color name="colourAddButton">#C6878F</color>
-    <color name="red">#FF0000</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="grey">#8C8C8C</color>

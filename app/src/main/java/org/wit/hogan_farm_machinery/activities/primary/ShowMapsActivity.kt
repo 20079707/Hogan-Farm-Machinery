@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities
+package org.wit.hogan_farm_machinery.activities.primary
 
 import android.content.Intent
 import android.os.Bundle
@@ -30,7 +30,7 @@ import org.wit.hogan_farm_machinery.activities.authentication.WelcomeActivity
 class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     private lateinit var binding: ActivityAllMapsBinding
-    lateinit var map: GoogleMap
+    private lateinit var map: GoogleMap
     lateinit var app: MainApp
     private lateinit var firebaseAnalytics: FirebaseAnalytics
 
@@ -52,16 +52,16 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         val navigationView = findViewById<View>(R.id.nav) as BottomNavigationView
         navigationView.setOnNavigationItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.list ->{
+                R.id.list -> {
                     startActivity<ListActivity>()
                 }
                 R.id.home -> {
                     startActivity<HomeActivity>()
                 }
-                R.id.map ->{
+                R.id.map -> {
                     startActivity<ShowMapsActivity>()
                 }
-                R.id.item_logout ->{
+                R.id.item_logout -> {
                     startActivity<LogInActivity>()
                 }
             }
@@ -76,7 +76,7 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_logout ->{
+            R.id.item_logout -> {
                 FirebaseAuth.getInstance().signOut()
                 app.tractors.clear()
                 val intent = Intent(this@ShowMapsActivity, WelcomeActivity::class.java)
@@ -89,15 +89,17 @@ class ShowMapsActivity : AppCompatActivity(), GoogleMap.OnMarkerClickListener {
         return false
     }
 
+    //when a marker is clicked
     override fun onMarkerClick(marker: Marker): Boolean {
         val tractor = marker.tag as TractorModel
         currentMake.text = tractor.make
         currentPrice.text = tractor.price
-        Glide.with(this).load(tractor.image).into(imageView);
+        Glide.with(this).load(tractor.image).into(imageView)
         return true
 
     }
 
+    //set map based on action
     private fun configureMap() {
         map.uiSettings.isZoomControlsEnabled = true
         app.tractors.findAll().forEach {

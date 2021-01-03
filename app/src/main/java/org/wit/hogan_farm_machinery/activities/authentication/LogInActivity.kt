@@ -10,7 +10,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import kotlinx.android.synthetic.main.activity_login.*
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.HomeActivity
+import org.wit.hogan_farm_machinery.activities.primary.HomeActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityLoginBinding
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.FireStore
@@ -21,7 +21,7 @@ class LogInActivity : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var refUsers: DatabaseReference
     private var firebaseUserID: String = ""
-    var fireStore: FireStore? = null
+    private var fireStore: FireStore? = null
 
     private lateinit var binding: ActivityLoginBinding
     lateinit var app: MainApp
@@ -48,9 +48,10 @@ class LogInActivity : AppCompatActivity() {
         return super.onCreateOptionsMenu(menu)
 
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.exit ->{
+            R.id.exit -> {
                 val intent = Intent(this@LogInActivity, WelcomeActivity::class.java)
                 startActivity(intent)
                 finish()
@@ -61,18 +62,23 @@ class LogInActivity : AppCompatActivity() {
         return false
     }
 
+    // determines what to do when a user inputs values into login screen
     private fun logInUser() {
         val email: String = emailLogIn.text.toString()
         val password: String = passwordLogIn.text.toString()
 
         when {
+            //if fields have no values inputted display message
             email == "" -> {
-                Toast.makeText(this@LogInActivity, "Please enter your Username.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LogInActivity, "Please enter your Username.", Toast.LENGTH_LONG)
+                    .show()
             }
             password == "" -> {
-                Toast.makeText(this@LogInActivity, "Please enter your password.", Toast.LENGTH_LONG).show()
+                Toast.makeText(this@LogInActivity, "Please enter your password.", Toast.LENGTH_LONG)
+                    .show()
             }
             else -> {
+                //if user is successful
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener { task ->
                     if (task.isSuccessful) {
                         if (fireStore != null) {
@@ -83,9 +89,11 @@ class LogInActivity : AppCompatActivity() {
                                 finish()
                             }
                         }
-                    }
-                    else{
-                        Toast.makeText(this@LogInActivity, "Error Message: " + task.exception!!.message.toString(), Toast.LENGTH_LONG).show()
+                    } else {
+                        //if user inputs wrong details display message
+                        Toast.makeText(this@LogInActivity,
+                            "Error Message: " + task.exception!!.message.toString(),
+                            Toast.LENGTH_LONG).show()
                     }
                 }
             }

@@ -15,7 +15,8 @@ import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.databinding.ActivityCreateMapsBinding
 import org.wit.hogan_farm_machinery.models.Location
 
-class AddMapsActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMarkerDragListener, GoogleMap.OnMarkerClickListener  {
+class AddMapsActivity : AppCompatActivity(), OnMapReadyCallback, GoogleMap.OnMarkerDragListener,
+    GoogleMap.OnMarkerClickListener {
 
     private lateinit var binding: ActivityCreateMapsBinding
     private lateinit var map: GoogleMap
@@ -64,6 +65,7 @@ class AddMapsActivity : AppCompatActivity(), OnMapReadyCallback,  GoogleMap.OnMa
         location.lng = marker.position.longitude
         location.zoom = map.cameraPosition.zoom
     }
+
     override fun onBackPressed() {
         val resultIntent = Intent()
         resultIntent.putExtra("location", location)
