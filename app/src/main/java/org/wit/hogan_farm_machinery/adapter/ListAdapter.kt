@@ -1,4 +1,4 @@
-package org.wit.hogan_farm_machinery.activities.adapter
+package org.wit.hogan_farm_machinery.adapter
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,14 +7,16 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.advert_card.view.*
 import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.helpers.readImageFromPath
 import org.wit.hogan_farm_machinery.models.TractorModel
 
 interface TractorListener {
     fun onTractorClick(tractor: TractorModel)
 }
 
-class TractorAdapter constructor(private var tractors: List<TractorModel>, private val listener: TractorListener) : RecyclerView.Adapter<TractorAdapter.MainHolder>() {
+class TractorAdapter constructor(
+    private var tractors: List<TractorModel>,
+    private val listener: TractorListener,
+) : RecyclerView.Adapter<TractorAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -38,7 +40,7 @@ class TractorAdapter constructor(private var tractors: List<TractorModel>, priva
         fun bind(tractor: TractorModel, listener: TractorListener) {
             itemView.tractorMake.text = tractor.make
             itemView.tractorPrice.text = tractor.price
-            Glide.with(itemView.context).load(tractor.image).into(itemView.imageIcon);
+            Glide.with(itemView.context).load(tractor.image).into(itemView.imageIcon)
             itemView.setOnClickListener { listener.onTractorClick(tractor) }
         }
     }

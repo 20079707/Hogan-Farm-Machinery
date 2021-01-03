@@ -4,17 +4,17 @@
 
     <item
         android:id="@+id/list"
-        android:title="@string/nav_edit_advert"
-        android:icon="@drawable/nav_list_icon" />
+        android:icon="@drawable/nav_list_icon"
+        android:title="@string/nav_edit_advert" />
 
     <item
         android:id="@+id/home"
-        android:title="@string/nav_home"
-        android:icon="@drawable/nav_home_icon" />
+        android:icon="@drawable/nav_home_icon"
+        android:title="@string/nav_home" />
 
     <item
         android:id="@+id/map"
-        android:title="@string/nav_map"
-        android:icon="@drawable/nav_map_icon" />
+        android:icon="@drawable/nav_map_icon"
+        android:title="@string/nav_map" />
 
 </menu>

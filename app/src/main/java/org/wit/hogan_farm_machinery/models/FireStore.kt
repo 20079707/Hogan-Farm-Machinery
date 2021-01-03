@@ -37,12 +37,17 @@ class FireStore(val context: Context) : TractorStore, AnkoLogger {
     }
 
     override fun update(tractor: TractorModel) {
-        val foundtractor: TractorModel? = tractors.find { p -> p.fbId == tractor.fbId }
-        if (foundtractor != null) {
-            foundtractor.make = tractor.make
-            foundtractor.description = tractor.description
-            foundtractor.image = tractor.image
-            foundtractor.location = tractor.location
+        val foundTractor: TractorModel? = tractors.find { p -> p.fbId == tractor.fbId }
+        if (foundTractor != null) {
+            foundTractor.make = tractor.make
+            foundTractor.price = tractor.price
+            foundTractor.year = tractor.year
+            foundTractor.image = tractor.image
+            foundTractor.description = tractor.description
+            foundTractor.radio1 = tractor.radio1
+            foundTractor.radio2 = tractor.radio2
+            foundTractor.category = tractor.category
+            foundTractor.location = tractor.location
         }
 
         db.child("users").child(userId).child("tractors").child(tractor.fbId).setValue(tractor)
@@ -80,7 +85,8 @@ class FireStore(val context: Context) : TractorStore, AnkoLogger {
                 }.addOnSuccessListener { taskSnapshot ->
                     taskSnapshot.metadata!!.reference!!.downloadUrl.addOnSuccessListener {
                         tractor.image = it.toString()
-                        db.child("users").child(userId).child("tractors").child(tractor.fbId).setValue(tractor)
+                        db.child("users").child(userId).child("tractors").child(tractor.fbId)
+                            .setValue(tractor)
                     }
                 }
             }
@@ -92,6 +98,7 @@ class FireStore(val context: Context) : TractorStore, AnkoLogger {
         val valueEventListener = object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
             }
+
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 dataSnapshot.children.mapNotNullTo(tractors) { it.getValue(TractorModel::class.java) }
                 tractorsReady()
@@ -101,6 +108,7 @@ class FireStore(val context: Context) : TractorStore, AnkoLogger {
         db = FirebaseDatabase.getInstance().reference
         st = FirebaseStorage.getInstance().reference
         tractors.clear()
-        db.child("users").child(userId).child("tractors").addListenerForSingleValueEvent(valueEventListener)
+        db.child("users").child(userId).child("tractors")
+            .addListenerForSingleValueEvent(valueEventListener)
     }
 }

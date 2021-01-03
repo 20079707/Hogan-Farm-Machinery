@@ -15,7 +15,8 @@ class MainApp : Application(), AnkoLogger {
     override fun onCreate() {
         super.onCreate()
         //tractors = JSONStore(applicationContext)
-        tractors = FireStore(applicationContext)
+
+        tractors = FireStore(applicationContext) //store tractors in firebase db
         info("Hogan FM App started")
     }
 }

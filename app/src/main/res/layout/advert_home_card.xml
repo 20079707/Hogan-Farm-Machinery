@@ -2,7 +2,6 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginBottom="8dp"
     android:elevation="24dp">
 
@@ -17,7 +16,7 @@
             android:layout_height="80dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginEnd="16dp"/>
+            android:layout_marginEnd="16dp" />
 
         <TextView
             android:id="@+id/tractorMake"
@@ -31,8 +30,8 @@
             android:id="@+id/tractorPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/imageIcon"
-            android:layout_below="@id/tractorMake" />
+            android:layout_below="@id/tractorMake"
+            android:layout_toEndOf="@+id/imageIcon" />
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

@@ -6,17 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.activity_welcome.*
-import org.wit.hogan_farm_machinery.R
-import org.wit.hogan_farm_machinery.activities.ListActivity
 import org.wit.hogan_farm_machinery.main.MainApp
 import kotlinx.android.synthetic.main.activity_welcome.btnWelcomeRegister
-import org.wit.hogan_farm_machinery.activities.HomeActivity
-import org.wit.hogan_farm_machinery.databinding.ActivityRegisterBinding
+import org.wit.hogan_farm_machinery.activities.primary.HomeActivity
 import org.wit.hogan_farm_machinery.databinding.ActivityWelcomeBinding
 
-class WelcomeActivity : AppCompatActivity(){
+class WelcomeActivity : AppCompatActivity() {
 
-    var firebaseUser: FirebaseUser? = null
+    private var firebaseUser: FirebaseUser? = null
     lateinit var app: MainApp
     private lateinit var binding: ActivityWelcomeBinding
 
@@ -26,12 +23,14 @@ class WelcomeActivity : AppCompatActivity(){
         setContentView(binding.root)
         app = application as MainApp
 
+        //register button
         btnWelcomeRegister.setOnClickListener {
             val intent = Intent(this@WelcomeActivity, RegisterActivity::class.java)
             startActivity(intent)
             finish()
         }
 
+        //login button
         btnWelcomeLogin.setOnClickListener {
             val intent = Intent(this@WelcomeActivity, LogInActivity::class.java)
             startActivity(intent)

@@ -45,7 +45,7 @@ class JSONStore(val context: Context) : TractorStore, AnkoLogger {
 
     // finds value saved and replaces it with updated values
     override fun update(tractor: TractorModel) {
-        val tractorsList = findAll() as ArrayList<TractorModel>
+        val tractors = findAll() as ArrayList<TractorModel>
         val foundTractor: TractorModel? = tractors.find { p -> p.id == tractor.id }
         if (foundTractor != null) {
             foundTractor.make = tractor.make

@@ -7,7 +7,6 @@ import android.view.*
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.get
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_create_advert.*
 import kotlinx.android.synthetic.main.activity_create_advert.view.*
@@ -43,9 +42,6 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         edit = false
 
 
-
-
-
         //spinner Function
         val data = resources.getStringArray(R.array.category_array)
         val adapter = ArrayAdapter(this, R.layout.spinner_item_selected, data)
@@ -56,8 +52,15 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         spinner.onItemSelectedListener = object :
 
             AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
-                Toast.makeText(this@PlaceAdActivity, parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View,
+                position: Int,
+                id: Long,
+            ) {
+                Toast.makeText(this@PlaceAdActivity,
+                    parent.getItemAtPosition(position).toString(),
+                    Toast.LENGTH_LONG).show()
                 tractor.category = categorySpinner.getItemAtPosition(position) as String
 
             }
@@ -66,7 +69,6 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
             }
         }
-        val position = tractor.category
 
 
         // setting edit values for tractor
@@ -81,7 +83,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             btnAdd.setText(R.string.button_updateTractor)
             chooseImage.setText(R.string.button_updateImage)
         }
-        
+
         // button which saves the values in the fields
         btnAdd.setOnClickListener {
             tractor.make = tractorMake.text.toString()
@@ -89,7 +91,7 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
             tractor.year = tractorYear.text.toString()
             tractor.description = tractorDescription.text.toString()
             if (tractor.make.isEmpty()) {
-                toast(R.string.enter_tractorMake)
+                toast(R.string.prompt_tractorMake)
             } else {
                 if (edit) {
                     app.tractors.update(tractor.copy())
@@ -111,11 +113,12 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         selectLocation.setOnClickListener {
             val location = Location(52.245696, -7.139102, 15f)
             if (tractor.location.zoom != 0f) {
-                location.lat =  tractor.location.lat
+                location.lat = tractor.location.lat
                 location.lng = tractor.location.lng
                 location.zoom = tractor.location.zoom
             }
-            startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location), locationRequest)
+            startActivityForResult(intentFor<AddMapsActivity>().putExtra("location", location),
+                locationRequest)
         }
     }
 
@@ -129,8 +132,8 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
                 R.id.radio_for_sale ->
                     if (checked) {
                         tractor.radio1 = true
-                        Toast.makeText(applicationContext,"For Sale selected",
-                                Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, "For Sale selected",
+                            Toast.LENGTH_SHORT).show()
 
                     } else {
                         tractor.radio1 = false
@@ -139,9 +142,9 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
                 R.id.radio_wanted ->
                     if (checked) {
                         tractor.radio2 = true
-                        Toast.makeText(applicationContext,"Wanted selected",
-                                Toast.LENGTH_SHORT).show()
-                    }else {
+                        Toast.makeText(applicationContext, "Wanted selected",
+                            Toast.LENGTH_SHORT).show()
+                    } else {
                         tractor.radio2 = false
 
                     }
