@@ -27,12 +27,26 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/appBarLayout"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="56dp"
+        android:text="@string/log_in"
+        android:textAlignment="center"
+        android:textColor="@color/colourToolBar"
+        android:textSize="35sp"
+        android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="16dp"
             android:orientation="vertical"
-            android:layout_centerInParent="true">
+            android:layout_centerInParent="true"
+            app:theme="@style/Theme.HoganFarmMachinery.AppBarOverlay">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/usernameTextInputLayout"
@@ -74,6 +88,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/log_in"
+                android:textSize="18sp"
                 android:layout_marginTop="125dp"
                 android:textColor="@color/white"
                 android:background="@color/colourToolBar"/>

@@ -63,4 +63,5 @@
     <string name="loginWelcome">Welcome</string>
     <string name="pick_date">Year</string>
     <string name="hint_tractorYear">Year</string>
+    <string name="register">Register</string>
 </resources>

@@ -18,7 +18,7 @@ data class TractorModel(@PrimaryKey(autoGenerate = true)
                         var description: String = "",
                         var radio1: Boolean = false,
                         var radio2: Boolean = false,
-                        var category: Boolean = true,
+                        var category: String = "",
                         @Embedded var location : Location = Location()): Parcelable
 
 @Parcelize

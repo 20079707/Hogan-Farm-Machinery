@@ -7,19 +7,17 @@ import android.view.*
 import android.widget.*
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.get
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.activity_create_advert.*
-import org.jetbrains.anko.AnkoLogger
-import org.jetbrains.anko.info
-import org.jetbrains.anko.intentFor
-import org.jetbrains.anko.toast
+import kotlinx.android.synthetic.main.activity_create_advert.view.*
+import org.jetbrains.anko.*
 import org.wit.hogan_farm_machinery.R
 import org.wit.hogan_farm_machinery.helpers.readImage
 import org.wit.hogan_farm_machinery.helpers.showImagePicker
 import org.wit.hogan_farm_machinery.main.MainApp
 import org.wit.hogan_farm_machinery.models.Location
 import org.wit.hogan_farm_machinery.models.TractorModel
-import java.text.NumberFormat
 
 
 class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
@@ -55,17 +53,21 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
 
         val spinner = findViewById<Spinner>(R.id.categorySpinner)
         spinner.adapter = adapter
-        spinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+        spinner.onItemSelectedListener = object :
 
-
+            AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
                 Toast.makeText(this@PlaceAdActivity, parent.getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show()
+                tractor.category = categorySpinner.getItemAtPosition(position) as String
+
             }
 
             override fun onNothingSelected(parent: AdapterView<*>) {
 
             }
         }
+        val position = tractor.category
+
 
         // setting edit values for tractor
         if (intent.hasExtra("tractor_edit")) {
@@ -199,6 +201,12 @@ class PlaceAdActivity : AppCompatActivity(), AnkoLogger {
         }
     }
 }
+
+
+
+
+
+
 
 
 
